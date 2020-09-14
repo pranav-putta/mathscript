@@ -1,0 +1,1 @@
+{"version":3,"file":"ast.test.js","sourceRoot":"","sources":["../../src/interpreter/ast.test.ts"],"names":[],"mappings":";;AACA,6CAA4C;AAC5C,iCAAgC;AAChC,mCAAkC;AAElC,IAAI,KAAK,GAAG,IAAI,aAAK,CAAC,OAAO,CAAC,CAAC;AAC/B,IAAI,MAAM,GAAG,IAAI,eAAM,CAAC,KAAK,CAAC,CAAC;AAC/B,IAAI,WAAW,GAAG,IAAI,yBAAW,CAAC,MAAM,CAAC,CAAC;AAC1C,WAAW,CAAC,SAAS,EAAE,CAAC"}
