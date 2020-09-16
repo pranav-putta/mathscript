@@ -1,0 +1,35 @@
+.App {
+  text-align: center;
+  flex: 1;
+}
+
+.App-header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.Input-Text-Area {
+  flex: 2;
+  background-color: #282c34;
+  border-width: 0;
+  border-style: hidden;
+  color: white;
+  outline: none;
+  padding: 1.5%;
+}
+.Result-Text-Area {
+  flex: 1;
+  border-width: 0;
+  border-style: hidden;
+  color: blue;
+  outline: none;
+  padding: 1.5%;
+}
+
+.App-link {
+  color: #61dafb;
+}
