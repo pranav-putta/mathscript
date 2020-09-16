@@ -32,15 +32,15 @@ exports.isdigit = isdigit;
  * @param b second integer
  */
 function mod(a, b) {
-    if (Number.isInteger(b)) {
-        var out = a % b;
-        return out >= 0 ? out : out + b;
+    if (!Number.isInteger(b)) {
+        throw new errors_1.ArithmeticError("expected an integer for mod");
     }
-    throw new errors_1.ArithmeticError("expected an integer for mod");
+    var out = a % b;
+    return out >= 0 ? out : out + b;
 }
 exports.mod = mod;
 /**
- * circular array based queue implementation
+ * circular array backed queue implementation
  */
 var Queue = /** @class */ (function () {
     function Queue() {

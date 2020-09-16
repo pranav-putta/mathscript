@@ -20,7 +20,7 @@ class App extends React.Component<Props, State> {
 
   onInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     let input: string = event.target.value;
-    let out = interpretSource(input);
+    let out = interpretSource(input.trim());
     if (typeof out === "string") {
       this.setState({ input: input, results: out });
     } else {

@@ -1,5 +1,5 @@
 import readlineSync from "readline-sync";
-import { Interpreter, interpretSource } from "./interpreter";
+import { interpretSource } from ".";
 
 while (true) {
   let input = readlineSync.question(">  ");

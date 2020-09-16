@@ -1,14 +1,14 @@
 import { AST } from "./ast";
-import { AComputable, Matrix } from "./computable";
-import { ArgumentError, MatrixError } from "./errors";
+import { isMatrix, isNumeric, Matrix } from "./computable";
+import { ArgumentError, ParsingError } from "./errors";
 
 /**
- *
+ * takes rref and stores into matrix
  * @param node
  */
 export function rref(node: AST) {
   let matrix = node.eval();
-  if (AComputable.isMatrix(matrix) && matrix.matrix) {
+  if (isMatrix(matrix) && matrix.matrix) {
     var lead = 0;
     for (var k = 0; k < matrix.dimR; k++) {
       if (matrix.dimC <= lead) return matrix;
@@ -47,21 +47,56 @@ export function rref(node: AST) {
   }
 }
 
+/**
+ * takes transpose and stores into matrix
+ * @param node
+ */
 export function transpose(node: AST) {
   let matrix = node.eval();
-
-  if (AComputable.isMatrix(matrix)) {
+  if (isMatrix(matrix)) {
     return matrix.transpose(true).result;
   } else {
     throw new ArgumentError("expected a matrix");
   }
 }
 
+/**
+ * takes determinant
+ * @param node
+ */
 export function det(node: AST) {
   let matrix = node.eval();
-  if (AComputable.isMatrix(matrix)) {
+  if (isMatrix(matrix)) {
     return matrix.determinant();
   } else {
     throw new ArgumentError("expected a matrix");
+  }
+}
+
+export function sqrt(node: AST) {
+  let num = node.eval();
+  if (isNumeric(num)) {
+    return Math.sqrt(num.value);
+  } else {
+    throw new ArgumentError("expected a number");
+  }
+}
+
+export function identity(node: AST): Matrix {
+  if (!node) {
+    throw new ParsingError("expected an integer parameter");
+  }
+  let num = node.eval();
+  if (isNumeric(num)) {
+    let arr: number[][] = [];
+    for (let i = 0; i < num.value; i++) {
+      arr.push([]);
+      for (let j = 0; j < num.value; j++) {
+        arr[i].push(i == j ? 1 : 0);
+      }
+    }
+    return new Matrix(arr);
+  } else {
+    throw new ArgumentError("expected a number");
   }
 }

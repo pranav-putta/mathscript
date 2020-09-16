@@ -9,7 +9,7 @@ export class Interpreter {
     this.parser = parser;
   }
 
-  public interpret(): any {
+  public interpret(): any[] {
     let tree: AST = this.parser.parse();
     return tree.eval();
   }
@@ -19,13 +19,13 @@ export class Interpreter {
  * interpret source code and output result
  * @param text raw input text
  */
-export function interpretSource(text: string): any {
+export function interpretSource(text: string): any[] | string {
   let lexer = new Lexer(text);
   let parser = new Parser(lexer);
   let interpreter = new Interpreter(parser);
   try {
     return interpreter.interpret();
   } catch (exception) {
-    console.log(exception.message);
+    return exception.message;
   }
 }

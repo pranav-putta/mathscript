@@ -9,7 +9,6 @@ var util_1 = require("./util");
  */
 var Lexer = /** @class */ (function () {
     function Lexer(text) {
-        this.reserved_keywords = {};
         this.text = text;
         this.position = -1;
     }
@@ -24,20 +23,8 @@ var Lexer = /** @class */ (function () {
             else {
                 break;
             }
-            /**
-            // allow spaces in identifier names
-            if (this.current_char && isspace(this.current_char)) {
-              // ignore whitespace until next token
-              this.ignore_whitespace(false);
-              // check if next token is also alphanumeric
-              let next = this.peek();
-              if (next && isalnum(next)) {
-                // if true, set next token
-                this.advance()
-              }
-            }*/
         }
-        return (this.reserved_keywords[result] || { type: token_1.TokenType.id, value: result });
+        return (Lexer.reserved_keywords[result] || { type: token_1.TokenType.id, value: result });
     };
     /**
      * increments position and updates current_char
@@ -53,7 +40,8 @@ var Lexer = /** @class */ (function () {
         }
     };
     /**
-     * retrieves next token without advancing position
+     * retrieves next character without advancing position
+     * @param steps number of steps to take
      */
     Lexer.prototype.peek = function (steps) {
         if (steps === void 0) { steps = 1; }
@@ -64,6 +52,9 @@ var Lexer = /** @class */ (function () {
             return this.text.charAt(this.position + steps);
         }
     };
+    /**
+     * retrieves the next token by ignoring whitespaces
+     */
     Lexer.prototype.peekToken = function () {
         var pos = this.position + 1;
         while (pos < this.text.length && util_1.isspace(this.text.charAt(pos))) {
@@ -133,13 +124,13 @@ var Lexer = /** @class */ (function () {
      * compares characters and matches with associated token
      */
     Lexer.prototype.tokenize = function () {
-        if (!this.current_char) {
-            // no more characters
-            return { type: token_1.TokenType.eof, value: "eof" };
-        }
-        if (util_1.isspace(this.current_char)) {
-            // ignore all spaces
+        // ignore all spaces
+        if (this.current_char && util_1.isspace(this.current_char)) {
             this.ignore_whitespace();
+        }
+        // check if no more characters
+        if (!this.current_char) {
+            return { type: token_1.TokenType.eof, value: "eof" };
         }
         if (util_1.isdigit(this.current_char)) {
             // capture numeric token
@@ -149,80 +140,86 @@ var Lexer = /** @class */ (function () {
             return this._id();
         }
         else if (this.current_char == "+") {
-            // capture "plus" token
-            return token_1.plus_token;
+            return token_1.newToken(token_1.TokenType.plus);
         }
         else if (this.current_char == "-") {
-            // capture "minus" token
-            return token_1.minus_token;
+            return token_1.newToken(token_1.TokenType.minus);
         }
         else if (this.current_char == "*") {
-            // capture "mul" token
-            return token_1.mul_token;
+            return token_1.newToken(token_1.TokenType.mul);
         }
         else if (this.current_char == "/") {
+            // check if token is rdiv
             var next = this.peek();
             if (next && next == "/") {
                 this.advance();
-                return token_1.rdiv_token;
+                return token_1.newToken(token_1.TokenType.rdiv);
             }
-            // capture "div" token
-            return token_1.div_token;
+            return token_1.newToken(token_1.TokenType.div);
         }
         else if (this.current_char == "(") {
-            // capture "lparen" token
-            return token_1.lparen_token;
+            return token_1.newToken(token_1.TokenType.lparen);
         }
         else if (this.current_char == ")") {
-            // capture "rparen" token
-            return token_1.rparen_token;
+            return token_1.newToken(token_1.TokenType.rparen);
         }
         else if (this.current_char == "[") {
-            // capture "lbracket" token
-            return token_1.lbracket_token;
+            return token_1.newToken(token_1.TokenType.lbracket);
         }
         else if (this.current_char == "]") {
-            // capture "rbracket" token
-            return token_1.rbracket_token;
+            return token_1.newToken(token_1.TokenType.rbracket);
         }
         else if (this.current_char == "<") {
-            // capture "lbracket" token
-            return token_1.larrow_token;
+            return token_1.newToken(token_1.TokenType.larrow);
         }
         else if (this.current_char == ">") {
-            // capture "rbracket" token
-            return token_1.rarrow_token;
+            return token_1.newToken(token_1.TokenType.rarrow);
         }
         else if (this.current_char == ";") {
-            // capture "semicolon" token
-            return token_1.semicolon_token;
+            return token_1.newToken(token_1.TokenType.semicolon);
         }
         else if (this.current_char == ",") {
-            // capture "comma" token
-            return token_1.comma_token;
+            return token_1.newToken(token_1.TokenType.comma);
         }
         else if (this.current_char == "|") {
-            // capture "bar" token
-            return token_1.bar_token;
+            return token_1.newToken(token_1.TokenType.bar);
         }
         else if (this.current_char == "=" && this.peek() != "=") {
-            // capture "assign" token
-            return token_1.assign_token;
+            return token_1.newToken(token_1.TokenType.assign);
         }
         else if (this.current_char == "." && this.peek() != ".") {
-            // capture "dot" token
-            return token_1.dot_token;
+            return token_1.newToken(token_1.TokenType.dot);
         }
         else if (this.current_char == "\n") {
-            // capture "endl" token
-            return token_1.endl_token;
+            return token_1.newToken(token_1.TokenType.endl);
         }
         else if (this.current_char == "^") {
-            // capture "^"
-            return token_1.pow_token;
+            return token_1.newToken(token_1.TokenType.pow);
+        }
+        else if (this.current_char == "&") {
+            // check if token is boolean and
+            var next = this.peek();
+            if (next && next == "&") {
+                this.advance();
+                return token_1.newToken(token_1.TokenType.and_bool);
+            }
+            return token_1.newToken(token_1.TokenType.and);
+        }
+        else if (this.current_char == "|") {
+            // check if token is rdiv
+            var next = this.peek();
+            if (next && next == "|") {
+                this.advance();
+                return token_1.newToken(token_1.TokenType.or_bool);
+            }
+            return token_1.newToken(token_1.TokenType.or);
         }
         // token wasn't recognized
         throw new errors_1.SymbolError("unexpected token: `" + this.current_char + "`");
+    };
+    Lexer.reserved_keywords = {
+        true: token_1.newToken(token_1.TokenType.id, "true"),
+        false: token_1.newToken(token_1.TokenType.id, "false"),
     };
     return Lexer;
 }());

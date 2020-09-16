@@ -7,5 +7,9 @@ exports.global_functions = {
     rref: functions_1.rref,
     trans: functions_1.transpose,
     transpose: functions_1.transpose,
+    det: functions_1.det,
+    determinant: functions_1.det,
+    q: functions_1.sqrt,
+    sqrt: functions_1.sqrt
 };
 //# sourceMappingURL=global.js.map

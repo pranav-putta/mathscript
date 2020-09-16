@@ -24,11 +24,15 @@ enum TokenType {
   endl = "\n",
   id = "id",
   eof = "eof",
+  and = "&",
+  or = "|",
+  and_bool = "&&",
+  or_bool = "||",
 }
 
 /**
  * holds a token of type with value
- * should not be used on its own, rather use aliases @type{SymbolToken, NumericToken, MatrixToken}
+ * should not be used on its own, rather use aliases @type{SymbolToken, NumericToken, BooleanToken}
  */
 interface IToken<E> {
   type: TokenType;
@@ -38,97 +42,23 @@ interface IToken<E> {
 /**
  * token holds a symbol like +, -, *, /, etc.
  */
-type SymbolToken = IToken<string>;
+export type SymbolToken = IToken<string>;
 /**
  * token holds a numeric value
  */
-type NumericToken = IToken<number>;
+export type NumericToken = IToken<number>;
+/**
+ * token holds a boolean value
+ */
+export type BooleanToken = IToken<boolean>;
 
 /**
  * supported tokens
  */
-type Token = SymbolToken | NumericToken;
+export type Token = SymbolToken | NumericToken | BooleanToken;
 
-// generated tokens
-export let plus_token: SymbolToken = {
-  type: TokenType.plus,
-  value: TokenType.plus.toString(),
-};
-export let minus_token: SymbolToken = {
-  type: TokenType.minus,
-  value: TokenType.minus.toString(),
-};
-export let mul_token: SymbolToken = {
-  type: TokenType.mul,
-  value: TokenType.mul.toString(),
-};
-export let div_token: SymbolToken = {
-  type: TokenType.div,
-  value: TokenType.div.toString(),
-};
-export let lparen_token: SymbolToken = {
-  type: TokenType.lparen,
-  value: TokenType.lparen.toString(),
-};
-export let rparen_token: SymbolToken = {
-  type: TokenType.rparen,
-  value: TokenType.rparen.toString(),
-};
-export let lbracket_token: SymbolToken = {
-  type: TokenType.lbracket,
-  value: TokenType.lbracket.toString(),
-};
-export let rbracket_token: SymbolToken = {
-  type: TokenType.rbracket,
-  value: TokenType.rbracket.toString(),
-};
-export let comma_token: SymbolToken = {
-  type: TokenType.comma,
-  value: TokenType.comma.toString(),
-};
-export let semicolon_token: SymbolToken = {
-  type: TokenType.semicolon,
-  value: TokenType.semicolon.toString(),
-};
-export let eof_token: SymbolToken = {
-  type: TokenType.eof,
-  value: TokenType.eof.toString(),
-};
-export let bar_token: SymbolToken = {
-  type: TokenType.bar,
-  value: TokenType.bar.toString(),
-};
-export let assign_token: SymbolToken = {
-  type: TokenType.assign,
-  value: TokenType.assign.toString(),
-};
-export let dot_token: SymbolToken = {
-  type: TokenType.dot,
-  value: TokenType.dot.toString(),
-};
-export let endl_token: SymbolToken = {
-  type: TokenType.endl,
-  value: TokenType.endl.toString(),
-};
-export let id_token: SymbolToken = {
-  type: TokenType.id,
-  value: TokenType.id.toString(),
-};
-export let rdiv_token: SymbolToken = {
-  type: TokenType.rdiv,
-  value: TokenType.rdiv.toString(),
-};
-export let larrow_token: SymbolToken = {
-  type: TokenType.larrow,
-  value: TokenType.larrow.toString()
-};
-export let rarrow_token: SymbolToken = {
-  type: TokenType.rarrow,
-  value: TokenType.rarrow.toString()
-}
-export let pow_token: SymbolToken = {
-  type: TokenType.pow,
-  value: TokenType.pow.toString()
+function newToken(type: TokenType, value?: string | number | boolean): Token {
+  return { type: type, value: value || type.toString() };
 }
 
 function isSymbolToken(token: Token): token is SymbolToken {
@@ -139,11 +69,4 @@ function isNumericToken(token: Token): token is NumericToken {
   return typeof token.value === "number" && token.type == TokenType.num;
 }
 
-export {
-  Token,
-  TokenType,
-  SymbolToken,
-  NumericToken,
-  isSymbolToken,
-  isNumericToken,
-};
+export { TokenType, isSymbolToken, isNumericToken, newToken };

@@ -30,17 +30,15 @@ export function isdigit(text: string): boolean {
  * @param b second integer
  */
 export function mod(a: number, b: number): number {
-  if (Number.isInteger(b)) {
-    let out = a % b;
-
-    return out >= 0 ? out : out + b;
+  if (!Number.isInteger(b)) {
+    throw new ArithmeticError("expected an integer for mod");
   }
-
-  throw new ArithmeticError("expected an integer for mod");
+  let out = a % b;
+  return out >= 0 ? out : out + b;
 }
 
 /**
- * circular array based queue implementation
+ * circular array backed queue implementation
  */
 export class Queue<E> {
   private data: E[];

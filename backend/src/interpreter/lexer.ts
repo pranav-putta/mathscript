@@ -1,38 +1,19 @@
 import { SymbolError } from "./errors";
-import {
-  Token,
-  TokenType,
-  plus_token,
-  minus_token,
-  mul_token,
-  div_token,
-  lparen_token,
-  rparen_token,
-  lbracket_token,
-  rbracket_token,
-  semicolon_token,
-  comma_token,
-  bar_token,
-  assign_token,
-  dot_token,
-  endl_token,
-  SymbolToken,
-  rdiv_token,
-  larrow_token,
-  rarrow_token,
-  pow_token,
-} from "./token";
+import { Token, TokenType, SymbolToken, newToken } from "./token";
 import { isspace, isdigit, isalnum } from "./util";
 
 interface Keywords {
-  [key: string]: SymbolToken;
+  [key: string]: Token;
 }
 
 /**
  * Lexer tokenizes raw input into @class{Token} objects
  */
 export class Lexer {
-  private readonly reserved_keywords: Keywords = {};
+  public static readonly reserved_keywords: Keywords = {
+    true: newToken(TokenType.id, "true"),
+    false: newToken(TokenType.id, "false"),
+  };
   /**
    * raw input text
    */
@@ -51,7 +32,7 @@ export class Lexer {
     this.position = -1;
   }
 
-  private _id(): SymbolToken {
+  private _id(): Token {
     let result = "";
     while (this.current_char && isalnum(this.current_char)) {
       result += this.current_char;
@@ -61,21 +42,9 @@ export class Lexer {
       } else {
         break;
       }
-      /**
-      // allow spaces in identifier names
-      if (this.current_char && isspace(this.current_char)) {
-        // ignore whitespace until next token
-        this.ignore_whitespace(false);
-        // check if next token is also alphanumeric
-        let next = this.peek();
-        if (next && isalnum(next)) {
-          // if true, set next token
-          this.advance()
-        }
-      }*/
     }
     return (
-      this.reserved_keywords[result] || { type: TokenType.id, value: result }
+      Lexer.reserved_keywords[result] || { type: TokenType.id, value: result }
     );
   }
 
@@ -94,7 +63,8 @@ export class Lexer {
   }
 
   /**
-   * retrieves next token without advancing position
+   * retrieves next character without advancing position
+   * @param steps number of steps to take
    */
   public peek(steps: number = 1): string | undefined {
     if (this.position + steps >= this.text.length) {
@@ -104,6 +74,9 @@ export class Lexer {
     }
   }
 
+  /**
+   * retrieves the next token by ignoring whitespaces
+   */
   public peekToken(): string {
     let pos = this.position + 1;
     while (pos < this.text.length && isspace(this.text.charAt(pos))) {
@@ -178,13 +151,14 @@ export class Lexer {
    * compares characters and matches with associated token
    */
   private tokenize(): Token {
-    if (!this.current_char) {
-      // no more characters
-      return { type: TokenType.eof, value: "eof" };
-    }
-    if (isspace(this.current_char)) {
-      // ignore all spaces
+    // ignore all spaces
+    if (this.current_char && isspace(this.current_char)) {
       this.ignore_whitespace();
+    }
+
+    // check if no more characters
+    if (!this.current_char) {
+      return { type: TokenType.eof, value: "eof" };
     }
 
     if (isdigit(this.current_char)) {
@@ -193,61 +167,61 @@ export class Lexer {
     } else if (isalnum(this.current_char)) {
       return this._id();
     } else if (this.current_char == "+") {
-      // capture "plus" token
-      return plus_token;
+      return newToken(TokenType.plus);
     } else if (this.current_char == "-") {
-      // capture "minus" token
-      return minus_token;
+      return newToken(TokenType.minus);
     } else if (this.current_char == "*") {
-      // capture "mul" token
-      return mul_token;
+      return newToken(TokenType.mul);
     } else if (this.current_char == "/") {
+      // check if token is rdiv
       let next = this.peek();
       if (next && next == "/") {
         this.advance();
-        return rdiv_token;
+        return newToken(TokenType.rdiv);
       }
-      // capture "div" token
-      return div_token;
+      return newToken(TokenType.div);
     } else if (this.current_char == "(") {
-      // capture "lparen" token
-      return lparen_token;
+      return newToken(TokenType.lparen);
     } else if (this.current_char == ")") {
-      // capture "rparen" token
-      return rparen_token;
+      return newToken(TokenType.rparen);
     } else if (this.current_char == "[") {
-      // capture "lbracket" token
-      return lbracket_token;
+      return newToken(TokenType.lbracket);
     } else if (this.current_char == "]") {
-      // capture "rbracket" token
-      return rbracket_token;
+      return newToken(TokenType.rbracket);
     } else if (this.current_char == "<") {
-      // capture "lbracket" token
-      return larrow_token;
+      return newToken(TokenType.larrow);
     } else if (this.current_char == ">") {
-      // capture "rbracket" token
-      return rarrow_token;
+      return newToken(TokenType.rarrow);
     } else if (this.current_char == ";") {
-      // capture "semicolon" token
-      return semicolon_token;
+      return newToken(TokenType.semicolon);
     } else if (this.current_char == ",") {
-      // capture "comma" token
-      return comma_token;
+      return newToken(TokenType.comma);
     } else if (this.current_char == "|") {
-      // capture "bar" token
-      return bar_token;
+      return newToken(TokenType.bar);
     } else if (this.current_char == "=" && this.peek() != "=") {
-      // capture "assign" token
-      return assign_token;
+      return newToken(TokenType.assign);
     } else if (this.current_char == "." && this.peek() != ".") {
-      // capture "dot" token
-      return dot_token;
+      return newToken(TokenType.dot);
     } else if (this.current_char == "\n") {
-      // capture "endl" token
-      return endl_token;
+      return newToken(TokenType.endl);
     } else if (this.current_char == "^") {
-      // capture "^"
-      return pow_token;
+      return newToken(TokenType.pow);
+    } else if (this.current_char == "&") {
+      // check if token is boolean and
+      let next = this.peek();
+      if (next && next == "&") {
+        this.advance();
+        return newToken(TokenType.and_bool);
+      }
+      return newToken(TokenType.and);
+    } else if (this.current_char == "|") {
+      // check if token is rdiv
+      let next = this.peek();
+      if (next && next == "|") {
+        this.advance();
+        return newToken(TokenType.or_bool);
+      }
+      return newToken(TokenType.or);
     }
 
     // token wasn't recognized

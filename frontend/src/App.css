@@ -20,6 +20,7 @@
   color: white;
   outline: none;
   padding: 1.5%;
+  font-size: x-large;
 }
 .Result-Text-Area {
   flex: 1;
@@ -28,6 +29,7 @@
   color: blue;
   outline: none;
   padding: 1.5%;
+  font-size: x-large;
 }
 
 .App-link {

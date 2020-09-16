@@ -10,17 +10,10 @@ import {
   VariableNode,
   ProcedureNode,
 } from "./ast";
-import { Matrix, AComputable } from "./computable";
+import { Numeric, Logical, UnevaluatedMatrix } from "./computable";
 import { MatrixError, ParsingError, SymbolError, SyntaxError } from "./errors";
 import { Lexer } from "./lexer";
-import {
-  TokenType,
-  Token,
-  isNumericToken,
-  plus_token,
-  eof_token,
-  isSymbolToken,
-} from "./token";
+import { TokenType, Token, isNumericToken, isSymbolToken } from "./token";
 
 export class Parser {
   private lexer: Lexer;
@@ -32,88 +25,80 @@ export class Parser {
   }
 
   /**
-   * identify expression
-   * expr   : term ((PLUS | MINUS) term)* | term ((PLUS | MINUS)term)*
-   * term   : factor ((MUL | DIV | POW) factor)*
-   * factor : (PLUS | MINUS) factor | NUMBER | lparen expr rparen | matrix | variable | procedure
-   * matrix :  lbracket (row)* rbracket
+   * parse tokens into an abstract syntax tree for traversal
    */
-  private expr(ignoreWhiteSpace: boolean = true): AST {
-    // first node
-    let node: AST = this.term();
-
-    // do this until a new ((PLUS | MINUS) term) cannot be found
-    while (
-      this.current_token.type == TokenType.plus ||
-      this.current_token.type == TokenType.minus
-    ) {
-      // check white spaces,
-      // if next character is empty or previous character is empty, binary operate
-      if (
-        ignoreWhiteSpace ||
-        this.lexer.peek(1) == " " ||
-        this.lexer.peek(-1) != " "
-      ) {
-        // capture operator (PLUS | MINUS)
-        let token = this.current_token;
-        if (token.type == TokenType.plus) {
-          this.eat(TokenType.plus);
-        } else if (token.type == TokenType.minus) {
-          this.eat(TokenType.minus);
-        }
-        // build abstract syntax tree
-        node = new BinaryOperatorNode(node, token, this.term());
-      } else {
-        return node;
-      }
+  public parse(): AST {
+    let node = this.program();
+    if (this.current_token.type != TokenType.eof) {
+      throw new SyntaxError("parsing didn't go as expected!");
     }
-
     return node;
   }
 
   /**
-   * identify term
-   * term   : factor ((MUL | DIV) factor)*
-   * factor : (PLUS | MINUS) factor | NUMBER | lparen expr rparen | matrix
+   * identify expression
+   * expr   : term ((PLUS | MINUS) term)* | term ((PLUS | MINUS)term)*
+   * term   : powers ((MUL | DIV ) powers)*
+   * powers : factor ((POW) factor)*
+   * factor : (PLUS | MINUS) factor | NUMBER | lparen expr rparen | matrix | variable | procedure | (TRUE | FALSE)
    * matrix :  lbracket (row)* rbracket
-   * @return node
    */
-  private term(): AST {
-    // left factor
-    let node: AST = this.powers();
-    // do this until a new ((POW | MUL | DIV | RDIV) factor) cannot be found
-    while (
-      this.current_token.type == TokenType.mul ||
-      this.current_token.type == TokenType.div ||
-      this.current_token.type == TokenType.rdiv
-    ) {
-      // capture next operator (MUL | DIV)
-      let token = this.current_token;
-      if (token.type == TokenType.mul) {
-        this.eat(TokenType.mul);
-      } else if (token.type == TokenType.div) {
-        this.eat(TokenType.div);
-      } else if (token.type == TokenType.rdiv) {
-        this.eat(TokenType.rdiv);
-      }
-      // build abstract syntax tree
-      node = new BinaryOperatorNode(node, token, this.powers());
-    }
-
-    return node;
+  private expr(ignoreWhiteSpace: boolean = true): AST {
+    let powers = this.binop(this.factor, [TokenType.pow]);
+    let mul_div = this.binop(powers, [TokenType.mul, TokenType.div]);
+    let add_plus = this.binop(
+      mul_div,
+      [TokenType.plus, TokenType.minus],
+      ignoreWhiteSpace
+    );
+    let and = this.binop(add_plus, [TokenType.and_bool]);
+    let or = this.binop(and, [TokenType.or_bool]);
+    return or();
   }
 
-  private powers(): AST {
-    // left factor
-    let node: AST = this.factor();
-    while (this.current_token.type == TokenType.pow) {
-      let token = this.current_token;
-      if (token.type == TokenType.pow) {
-        this.eat(TokenType.pow);
+  private bool(): AST {
+    let token = this.current_token;
+    if (token.type == TokenType.id) {
+      if (token.value === Lexer.reserved_keywords["true"].value) {
+        return new SingleValueNode(new Logical(true));
+      } else if (token.value === Lexer.reserved_keywords["false"].value) {
+        return new SingleValueNode(new Logical(true));
       }
-      node = new BinaryOperatorNode(node, token, this.factor());
     }
-    return node;
+    throw new ParsingError("unexpected symbol: " + token.value);
+  }
+
+  /**
+   * create a binary operation function
+   * @param func function to process
+   * @param operators operators to check for
+   * @param ignoreWhiteSpace check for whitespace pattern " + 1" => plus, " +1" => unary positive
+   */
+  private binop(
+    func: () => AST,
+    operators: TokenType[],
+    ignoreWhiteSpace: boolean = true
+  ): () => AST {
+    // create a callable function
+    let call = (): AST => {
+      // left node
+      let node: AST = func();
+      let token: Token = this.current_token;
+      while (operators.includes(token.type)) {
+        if (
+          ignoreWhiteSpace ||
+          this.lexer.peek(1) == " " ||
+          this.lexer.peek(-1) != " "
+        ) {
+          this.eat(token.type);
+          node = new BinaryOperatorNode(node, token, func());
+        } else {
+          return node;
+        }
+      }
+      return node;
+    };
+    return call;
   }
 
   /**
@@ -135,7 +120,7 @@ export class Parser {
     } else if (isNumericToken(token)) {
       // token is a number
       this.eat(TokenType.num);
-      return new SingleValueNode(token.value);
+      return new SingleValueNode(new Numeric(token.value));
     } else if (token.type == TokenType.lparen) {
       // lparen expr rparen
       this.eat(TokenType.lparen);
@@ -144,37 +129,46 @@ export class Parser {
       return node;
     } else if (token.type == TokenType.lbracket) {
       // matrix
-      let matrix: Matrix = this.matrix();
+      let matrix: UnevaluatedMatrix = this.matrix();
       return new SingleValueNode(matrix);
     } else if (token.type == TokenType.larrow) {
-      let vector: Matrix = this.vector();
+      // vector (meaning single row matrix)
+      let vector: UnevaluatedMatrix = this.vector();
       return new SingleValueNode(vector);
     } else if (token.type == TokenType.id) {
+      // identifier
       let next = this.lexer.peek();
       if (next && next == "(") {
+        // procedure
         return this.procedure();
       } else {
+        // variable identifier
         return this.variable();
       }
+    } else {
+      return this.bool();
     }
 
     throw new SyntaxError("unexpected symbol");
   }
 
-  private vector(): Matrix {
+  /**
+   * vector : single row matrix
+   */
+  private vector(): UnevaluatedMatrix {
     // check left arrow
     this.eat(TokenType.larrow);
     // get one row
     let row = this.matrix_row(TokenType.rarrow);
     // check right arrow
     this.eat(TokenType.rarrow);
-    return new Matrix([row]);
+    return new UnevaluatedMatrix([row]);
   }
 
   /**
    * matrix :  lbracket (row ;)* (row ]) rbracket
    */
-  private matrix(): Matrix {
+  private matrix(): UnevaluatedMatrix {
     let arr: ComputableNode[][] = new Array();
     // check left bracket
     this.eat(TokenType.lbracket, "parsing matrix: ");
@@ -188,7 +182,7 @@ export class Parser {
     }
     // check right bracket
     this.eat(TokenType.rbracket, "parsing matrix: ");
-    return new Matrix(arr);
+    return new UnevaluatedMatrix(arr);
   }
 
   /**
@@ -248,7 +242,7 @@ export class Parser {
   /**
    * variable : id
    */
-  public variable(): VariableNode {
+  private variable(): VariableNode {
     if (isSymbolToken(this.current_token)) {
       let node = new VariableNode(this.current_token);
       this.eat(TokenType.id);
@@ -258,9 +252,75 @@ export class Parser {
   }
 
   /**
+   * program : compound eof
+   */
+  private program(): AST {
+    let node = this.compound();
+    this.eat(TokenType.eof);
+    return node;
+  }
+
+  /**
+   * compound: statement_list
+   */
+  private compound(): AST {
+    return new CompoundNode(this.statement_list());
+  }
+
+  /**
+   * statement_list : statement | statement endl statement_list
+   */
+  private statement_list(): AST[] {
+    let results = this.statement();
+    while (this.current_token.type == TokenType.endl) {
+      // ignore all end lines
+      while (this.current_token.type == TokenType.endl) {
+        this.eat(TokenType.endl);
+      }
+      results = results.concat(this.statement());
+    }
+
+    if (this.current_token.type == TokenType.id) {
+      throw new SyntaxError("unexpected identifier");
+    }
+
+    return results;
+  }
+
+  /**
+   * statement : id_statement | expr
+   */
+  private statement(): AST[] {
+    if (this.current_token.type == TokenType.id) {
+      return this.id_statement();
+    } else if (this.current_token.type != TokenType.eof) {
+      return [this.expr(true)];
+    } else {
+      return [];
+    }
+  }
+  /**
+   * id_statement : assignemnt | procedure | expr
+   */
+  private id_statement(): AST[] {
+    let token = this.current_token;
+    if (token.type == TokenType.id) {
+      if (this.lexer.peekToken() == "=") {
+        return this.assignment();
+      } else if (this.lexer.peekToken() == "(") {
+        return [this.procedure()];
+      } else {
+        return [this.expr()];
+      }
+    }
+
+    throw new ParsingError("couldn't find an identifier!");
+  }
+
+  /**
    * assignment : (variable = expr) (,variable = expr)*
    */
-  public assignment(): AssignNode[] {
+  private assignment(): AssignNode[] {
     let left = this.variable();
     let token = this.current_token;
     this.eat(TokenType.assign, "parsing assignment: ");
@@ -278,7 +338,7 @@ export class Parser {
   /**
    * procedure : id lparen (expr,)* rparen
    */
-  public procedure(): ProcedureNode {
+  private procedure(): ProcedureNode {
     let token = this.current_token;
     if (!isSymbolToken(token)) {
       throw new SymbolError("expected an identifier symbol but didn't get it!");
@@ -296,82 +356,5 @@ export class Parser {
     }
     this.eat(TokenType.rparen);
     return new ProcedureNode(token, args);
-  }
-
-  /**
-   * assignment | procedure | expr
-   */
-  public variable_statement(): AST[] {
-    let token = this.current_token;
-    if (token.type == TokenType.id) {
-      if (this.lexer.peekToken() == "=") {
-        return this.assignment();
-      } else if (this.lexer.peekToken() == "(") {
-        return [this.procedure()];
-      } else {
-        return [this.expr()];
-      }
-    }
-
-    throw new ParsingError("couldn't find a variable!");
-  }
-
-  /**
-   * statement : compound_statement | assignment_statment | expression_statement | empty
-   */
-  public statement(): AST[] {
-    if (this.current_token.type == TokenType.id) {
-      return this.variable_statement();
-    } else {
-      return [this.expr(true)];
-    }
-  }
-
-  /**
-   * statement_list : statement | statement endl statement_list
-   */
-  public statement_list(): AST[] {
-    let results = this.statement();
-    while (this.current_token.type == TokenType.endl) {
-      this.eat(TokenType.endl);
-      results = results.concat(this.statement());
-    }
-
-    if (this.current_token.type == TokenType.id) {
-      throw new SyntaxError("unexpected identifier");
-    }
-
-    return results;
-  }
-
-  /**
-   * compound: statement_list
-   */
-  public compound(): AST {
-    let nodes = this.statement_list();
-
-    let node = new CompoundNode();
-    for (let n of nodes) {
-      node._children.push(n);
-    }
-
-    return node;
-  }
-
-  public program(): AST {
-    let node = this.compound();
-    this.eat(TokenType.eof);
-    return node;
-  }
-
-  /**
-   * parse tokens into an abstract syntax tree for traversal
-   */
-  public parse(): AST {
-    let node = this.program();
-    if (this.current_token.type != TokenType.eof) {
-      throw new SyntaxError("parsing didn't go as expected!");
-    }
-    return node;
   }
 }

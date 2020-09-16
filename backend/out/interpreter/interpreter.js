@@ -26,7 +26,7 @@ function interpretSource(text) {
         return interpreter.interpret();
     }
     catch (exception) {
-        console.log(exception.message);
+        return exception.message;
     }
 }
 exports.interpretSource = interpretSource;
