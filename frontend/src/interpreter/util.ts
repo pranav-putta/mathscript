@@ -40,7 +40,7 @@ export function mod(a: number, b: number): number {
 }
 
 /**
- * circular array based queue implementation
+ * circular array backed queue implementation
  */
 export class Queue<E> {
   private data: E[];

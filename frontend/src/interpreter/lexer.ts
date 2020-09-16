@@ -178,13 +178,14 @@ export class Lexer {
    * compares characters and matches with associated token
    */
   private tokenize(): Token {
+    if (this.current_char && isspace(this.current_char)) {
+      // ignore all spaces
+      this.ignore_whitespace();
+    }
+    
     if (!this.current_char) {
       // no more characters
       return { type: TokenType.eof, value: "eof" };
-    }
-    if (isspace(this.current_char)) {
-      // ignore all spaces
-      this.ignore_whitespace();
     }
 
     if (isdigit(this.current_char)) {

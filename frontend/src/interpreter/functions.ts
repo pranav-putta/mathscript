@@ -1,6 +1,6 @@
 import { AST } from "./ast";
 import { AComputable, Matrix } from "./computable";
-import { ArgumentError } from "./errors";
+import { ArgumentError, MatrixError } from "./errors";
 
 /**
  *
@@ -52,6 +52,15 @@ export function transpose(node: AST) {
 
   if (AComputable.isMatrix(matrix)) {
     return matrix.transpose(true).result;
+  } else {
+    throw new ArgumentError("expected a matrix");
+  }
+}
+
+export function det(node: AST) {
+  let matrix = node.eval();
+  if (AComputable.isMatrix(matrix)) {
+    return matrix.determinant();
   } else {
     throw new ArgumentError("expected a matrix");
   }

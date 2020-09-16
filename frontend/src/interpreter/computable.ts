@@ -360,6 +360,57 @@ export class Matrix extends AComputable {
     throw new ParsingError("matrix has not been evaluated yet!");
   }
 
+  public determinant(): number {
+    if (this.matrix) {
+      if (this.dimR != this.dimC) {
+        throw new MatrixError("cannot take determinant of non-square matrix");
+      }
+
+      let n = this.dimR;
+      let M = this.matrix;
+      if (n == 2) {
+        return M[0][0] * M[1][1] - M[0][1] * M[1][0];
+      } else {
+        let d = 0;
+        for (let i = 0; i < n; i++) {
+          // create a sub matrix
+          let subMatrix: number[][] = [];
+          for (let r = 0; r < n; r++) {
+            subMatrix.push([]);
+            for (let c = 0; c < n; c++) {
+              if (c != i) {
+                subMatrix[r].push(this.matrix[r][c]);
+              }
+            }
+          }
+
+          d += M[0][i] * new Matrix(undefined, subMatrix).determinant();
+        }
+      }
+    }
+    throw new ParsingError("matrix has not been evaluated yet!");
+  }
+
+  public subMatrix(
+    startRow: number,
+    endRow: number = this.dimR - 1,
+    startCol: number,
+    endCol: number = this.dimC - 1
+  ): Matrix {
+    if (this.matrix) {
+      let arr: number[][] = new Array();
+      for (let i = startRow; i <= endRow; i++) {
+        arr.push([]);
+        for (let j = startCol; j <= endCol; j++) {
+          arr[i].push(this.matrix[i][j]);
+        }
+      }
+      return new Matrix(undefined, arr);
+    } else {
+      throw new ParsingError("matrix has not been evaluated yet!");
+    }
+  }
+
   public toString(): string {
     let m = this.matrix;
     if (m) {

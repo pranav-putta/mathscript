@@ -26,8 +26,7 @@ class App extends React.Component<Props, State> {
     } else {
       let result = "";
       for (let o of out) {
-        if (o) {
-          let str = o.toString();
+        if (o !== undefined) {
           result += o.toString();
         }
         result += "\n";

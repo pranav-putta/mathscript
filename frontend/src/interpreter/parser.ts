@@ -333,8 +333,13 @@ export class Parser {
   public statement_list(): AST[] {
     let results = this.statement();
     while (this.current_token.type == TokenType.endl) {
-      this.eat(TokenType.endl);
-      results = results.concat(this.statement());
+      while (this.current_token.type == TokenType.endl) {
+        this.eat(TokenType.endl);
+      }
+
+      if (this.current_token.type != TokenType.eof) {
+        results = results.concat(this.statement());
+      }
     }
 
     if (this.current_token.type == TokenType.id) {
