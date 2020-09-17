@@ -1,1 +1,0 @@
-{"version":3,"file":"main.js","sourceRoot":"","sources":["../../src/interpreter/main.ts"],"names":[],"mappings":";;;;;AAAA,gEAAyC;AACzC,sBAAoC;AAEpC,OAAO,IAAI,EAAE;IACX,IAAI,KAAK,GAAG,uBAAY,CAAC,QAAQ,CAAC,KAAK,CAAC,CAAC;IACzC,OAAO,CAAC,GAAG,CAAC,kBAAe,CAAC,KAAK,CAAC,CAAC,CAAC;CACrC"}
