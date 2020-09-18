@@ -92,3 +92,48 @@ export function identity(num: Numeric): Matrix {
     throw new ArgumentError("expected a number");
   }
 }
+
+function rationalApprox(t: number) {
+  let c = [2.515517, 0.802853, 0.010328];
+  let d = [1.432788, 0.189269, 0.001308];
+  return (
+    t -
+    ((c[2] * t + c[1]) * t + c[0]) / (((d[2] * t + d[1]) * t + d[0]) * t + 1.0)
+  );
+}
+
+function invNormCDF(p: number) {
+  if (p < 0.5) {
+    return -rationalApprox(Math.sqrt(-2 * Math.log(p)));
+  } else {
+    return -rationalApprox(Math.sqrt(-2 * Math.log(1 - p)));
+  }
+}
+
+export function confidenceIntervalProportions(
+  p: Numeric,
+  n: Numeric,
+  ci: Numeric
+) {
+  let prob = (p: number) => {
+    return (1 - p) / 2 + p;
+  };
+  let z = invNormCDF(prob(ci.value));
+  let r = z * Math.sqrt((p.value * (1 - p.value)) / n.value);
+  return [
+    Math.round((p.value + r) * 1000) / 1000,
+    Math.round((p.value - r) * 1000) / 1000,
+  ];
+}
+
+export function confidenceIntervalMean(x: Numeric, s: Numeric, n: Numeric, ci: Numeric) {
+  let prob = (p: number) => {
+    return (1 - p) / 2 + p;
+  };
+  let z = invNormCDF(prob(ci.value));
+  let r = z * (s.value / Math.sqrt(n.value))
+  return [
+    Math.round((x.value + r) * 1000) / 1000,
+    Math.round((x.value - r) * 1000) / 1000,
+  ];
+}

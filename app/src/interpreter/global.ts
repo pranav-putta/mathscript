@@ -7,6 +7,10 @@ import {
 import { Computable } from "./computable";
 import { ParsingError, RuntimeError } from "./errors";
 import { rref, transpose, det, sqrt, identity } from "./lib";
+import {
+  confidenceIntervalMean,
+  confidenceIntervalProportions,
+} from "./lib/functions";
 import { Stack } from "./util";
 
 type Function = (...args: any[]) => any;
@@ -35,6 +39,8 @@ let global_functions: GlobalProcedures = {
   q: sqrt,
   sqrt: sqrt,
   identity: identity,
+  cip: confidenceIntervalProportions,
+  cim: confidenceIntervalMean,
 };
 let local_functions: LocalProcedures = {};
 let function_stack: Stack<FunctionBlock> = new Stack();
@@ -94,10 +100,15 @@ export function assignVariable(name: string, value: any, scope: VariableScope) {
  * generate a variables component
  * @param vars parameter nodes
  */
-function evaluateLocalFunctionParameters(params: VariableNode[], vals: AST[]): Variables {
+function evaluateLocalFunctionParameters(
+  params: VariableNode[],
+  vals: AST[]
+): Variables {
   let variables: Variables = {};
   if (params.length != vals.length) {
-    throw new RuntimeError(`expected ${params.length} parameters, but got ${vals.length}`)
+    throw new RuntimeError(
+      `expected ${params.length} parameters, but got ${vals.length}`
+    );
   }
   for (let i = 0; i < params.length; i++) {
     variables[params[i].name] = vals[i].eval();
@@ -155,7 +166,7 @@ export function createUserDefinedFunction(func: ProcedureDefinitionNode) {
 }
 
 export function clearScopes() {
-  global_scope = {}
-  local_functions = {}
-  function_stack.clear()
+  global_scope = {};
+  local_functions = {};
+  function_stack.clear();
 }

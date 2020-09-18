@@ -195,9 +195,13 @@ export class BinaryOperatorNode extends ComputableNode {
 
     if (isComputable(l) && isComputable(r)) {
       return computeResult(l, r, this.operator.type).result;
+    } else if (isComputable(l)) {
+      throw new ParsingError(`${r} is not computable`);
+    } else if (isComputable(r)) {
+      throw new ParsingError(`${l} is not computable`);
+    } else {
+      throw new ParsingError(`${l} and ${r} are not computable`);
     }
-
-    throw new ParsingError(`incomplete operation: ${l} and ${r}`);
   }
 }
 
