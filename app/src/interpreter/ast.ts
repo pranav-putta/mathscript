@@ -11,6 +11,7 @@ import {
   isComputable,
   computeResult,
   isLogical,
+  Logical,
 } from "./computable";
 import {
   ParsingError,
@@ -196,9 +197,7 @@ export class BinaryOperatorNode extends ComputableNode {
       return computeResult(l, r, this.operator.type).result;
     }
 
-    throw new ParsingError(
-      `cannot operate on two non-computable values: ${l} and ${r}`
-    );
+    throw new ParsingError(`incomplete operation: ${l} and ${r}`);
   }
 }
 
@@ -326,6 +325,13 @@ export class UnaryOperatorNode extends ComputableNode {
       return this.next.eval();
     } else if (this.token.type == TokenType.minus) {
       return this.next.eval().mul(new Numeric(-1)).result;
+    } else if (this.token.type == TokenType.not) {
+      let n = this.next.eval();
+      if (isLogical(n)) {
+        return new Logical(!n.value);
+      } else {
+        throw new RuntimeError("unary not expects boolean");
+      }
     } else {
       throw new SymbolError(
         "unexpected unary operator: " + this.token.type.toString()

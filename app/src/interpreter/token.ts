@@ -18,6 +18,8 @@ enum TokenType {
   sub_eq = "-=",
   mul_eq = "*=",
   div_eq = "/=",
+  not_bool = "!=",
+  not = "!",
   plus = "+",
   minus = "-",
   mul = "*",

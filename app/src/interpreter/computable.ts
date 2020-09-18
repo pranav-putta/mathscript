@@ -17,6 +17,11 @@ export abstract class Computable {
   public abstract less(other: Computable): LogicalResult;
   public abstract more(other: Computable): LogicalResult;
   public abstract equals(other: Computable): LogicalResult;
+  public abstract bitwiseAnd(other: Computable): Result;
+  public abstract bitwiseOr(other: Computable): Result;
+  public not_equals(other: Computable): Result {
+    return { result: new Logical(!this.equals(other).result.boolVal) };
+  }
 }
 
 /**
@@ -51,17 +56,27 @@ export function computeResult(
       return a.more(b);
     case TokenType.eq:
       return a.equals(b);
+    case TokenType.not_bool:
+      return a.not_equals(b);
     case TokenType.more_eq:
       return a.more(b).result.or(a.equals(b).result);
     case TokenType.less_eq:
       return a.less(b).result.or(a.equals(b).result);
   }
-  if (isLogical(a) && isLogical(b)) {
-    switch (operator) {
-      case TokenType.and_bool:
-        return a.and(b);
-      case TokenType.or_bool:
-        return a.or(b);
+  if (
+    operator == TokenType.and_bool ||
+    operator == TokenType.or_bool ||
+    operator == TokenType.not
+  ) {
+    if (isLogical(a) && isLogical(b)) {
+      switch (operator) {
+        case TokenType.and_bool:
+          return a.and(b);
+        case TokenType.or_bool:
+          return a.or(b);
+      }
+    } else {
+      throw new ArithmeticError("boolean operator exepcts bool expression");
     }
   }
   throw new ArithmeticError("unsupported operation " + operator.toString());
@@ -270,12 +285,11 @@ export class Matrix extends Computable {
           }
           newMatrix[i].push(temp);
         }
-
-        if (newMatrix.length == 1 && newMatrix[0].length == 1) {
-          return { result: new Numeric(newMatrix[0][0]) };
-        } else {
-          return { result: new Matrix(newMatrix) };
-        }
+      }
+      if (newMatrix.length == 1 && newMatrix[0].length == 1) {
+        return { result: new Numeric(newMatrix[0][0]) };
+      } else {
+        return { result: new Matrix(newMatrix) };
       }
     } else if (isNumeric(other)) {
       let arr: number[][] = new Array();
@@ -424,6 +438,38 @@ export class Matrix extends Computable {
     throw new Error("matrix not implemented for > operator.");
   }
 
+  public bitwiseAnd(other: Computable): Result {
+    if (isMatrix(other)) {
+      if (other.dimC != this.dimC || other.dimR != this.dimR) {
+        throw new MatrixError(
+          "can't operate on matricies of different dimensions"
+        );
+      }
+      let newArr: number[][] = [];
+      for (let i = 0; i < this.dimR; i++) {
+        for (let j = 0; j < this.dimC; j++) {
+          newArr[i][j] = this.matrix[i][j] & other.matrix[i][j];
+        }
+      }
+      return { result: new Matrix(newArr) };
+    } else if (isNumeric(other)) {
+      let newArr: number[][] = [];
+      for (let i = 0; i < this.dimR; i++) {
+        for (let j = 0; j < this.dimC; j++) {
+          newArr[i][j] = this.matrix[i][j] & other.value;
+        }
+      }
+      return { result: new Matrix(newArr) };
+    }
+    this.expectedMatrixOrNumericError();
+  }
+  public bitwiseOr(other: Computable): Result {
+    if (isMatrix(other)) {
+    } else if (isNumeric(other)) {
+    }
+    this.expectedMatrixOrNumericError();
+  }
+
   public equals(other: Computable): LogicalResult {
     if (isMatrix(other)) {
       if (this.dimR == other.dimR && this.dimC == other.dimC) {
@@ -564,6 +610,13 @@ export class Numeric extends Computable {
     this.error();
   }
 
+  public bitwiseAnd(other: Computable): Result {
+    throw new Error("Method not implemented.");
+  }
+  public bitwiseOr(other: Computable): Result {
+    throw new Error("Method not implemented.");
+  }
+
   public toString(): string {
     return this.value.toString();
   }
@@ -626,6 +679,12 @@ export class Logical extends Numeric {
   public nand(other: Logical): LogicalResult {
     return {
       result: new Logical(this.boolVal == other.boolVal && !this.boolVal),
+    };
+  }
+
+  public not(other: Logical): LogicalResult {
+    return {
+      result: new Logical(this.boolVal != other.boolVal),
     };
   }
 

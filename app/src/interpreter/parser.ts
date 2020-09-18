@@ -55,7 +55,7 @@ export class Parser {
   private expr(ignoreWhiteSpace: boolean, scope: VariableScope): AST {
     let opsOrder: Operation[] = [
       {
-        tokens: [TokenType.plus, TokenType.minus],
+        tokens: [TokenType.pow],
         igws: ignoreWhiteSpace,
         scope: scope,
       },
@@ -64,28 +64,33 @@ export class Parser {
         igws: true,
         scope: scope,
       },
-
       {
-        tokens: [TokenType.pow],
+        tokens: [TokenType.plus, TokenType.minus],
         igws: ignoreWhiteSpace,
         scope: scope,
       },
-      { tokens: [TokenType.and_bool], igws: true, scope: scope },
-      { tokens: [TokenType.or_bool], igws: true, scope: scope },
+      {
+        tokens: [TokenType.and, TokenType.or],
+        igws: ignoreWhiteSpace,
+        scope: scope,
+      },
       {
         tokens: [
           TokenType.larrow,
           TokenType.rarrow,
           TokenType.eq,
+          TokenType.not_bool,
           TokenType.less_eq,
           TokenType.more_eq,
         ],
         igws: ignoreWhiteSpace,
         scope: scope,
       },
+      { tokens: [TokenType.and_bool], igws: true, scope: scope },
+      { tokens: [TokenType.or_bool], igws: true, scope: scope },
     ];
     let func = this.factor;
-    for (let op of opsOrder.reverse()) {
+    for (let op of opsOrder) {
       func = this.binops(func, op.tokens, op.igws);
     }
     let expr = func.call(this, scope);
@@ -148,6 +153,9 @@ export class Parser {
     } else if (token.type == TokenType.minus) {
       // negation sign
       this.eat(TokenType.minus);
+      return new UnaryOperatorNode(token, this.factor(scope));
+    } else if (token.type == TokenType.not) {
+      this.eat(TokenType.not);
       return new UnaryOperatorNode(token, this.factor(scope));
     } else if (isNumericToken(token)) {
       // token is a number
