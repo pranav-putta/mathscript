@@ -70,6 +70,8 @@ export class Parser {
         igws: ignoreWhiteSpace,
         scope: scope,
       },
+      { tokens: [TokenType.and_bool], igws: true, scope: scope },
+      { tokens: [TokenType.or_bool], igws: true, scope: scope },
       {
         tokens: [
           TokenType.larrow,
@@ -81,8 +83,6 @@ export class Parser {
         igws: ignoreWhiteSpace,
         scope: scope,
       },
-      { tokens: [TokenType.and_bool], igws: true, scope: scope },
-      { tokens: [TokenType.or_bool], igws: true, scope: scope },
     ];
     let func = this.factor;
     for (let op of opsOrder.reverse()) {
