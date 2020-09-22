@@ -25,6 +25,7 @@ enum TokenType {
   mul = "*",
   pow = "^",
   div = "/",
+  modulo = "%",
   lparen = "(",
   rparen = ")",
   lbracket = "[",

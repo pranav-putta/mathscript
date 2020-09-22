@@ -1,5 +1,5 @@
 import { ComputableNode } from "./ast";
-import { ArithmeticError, MatrixError } from "./errors";
+import { ArithmeticError, MatrixError, ParsingError } from "./errors";
 import { TokenType } from "./token";
 
 export interface Result {
@@ -14,6 +14,7 @@ export abstract class Computable {
   public abstract div(other: Computable): Result;
   public abstract rdiv(other: Computable): Result;
   public abstract pow(other: Computable): Result;
+  public abstract mod(other: Computable): Result;
   public abstract less(other: Computable): LogicalResult;
   public abstract more(other: Computable): LogicalResult;
   public abstract equals(other: Computable): LogicalResult;
@@ -56,6 +57,8 @@ export function computeResult(
       return a.more(b);
     case TokenType.eq:
       return a.equals(b);
+    case TokenType.modulo:
+      return a.mod(b);
     case TokenType.not_bool:
       return a.not_equals(b);
     case TokenType.more_eq:
@@ -438,6 +441,36 @@ export class Matrix extends Computable {
     throw new Error("matrix not implemented for > operator.");
   }
 
+  public mod(other: Computable): Result {
+    if (isMatrix(other)) {
+      if (this.dimR != other.dimR || this.dimC != other.dimC) {
+        throw new ParsingError("needs same dimensions");
+      }
+
+      let newArr: number[][] = [];
+      for (let i = 0; i < this.dimR; i++) {
+        newArr.push([]);
+        for (let j = 0; j < this.dimC; j++) {
+          newArr[i].push(this.matrix[i][j] % other.matrix[i][j]);
+        }
+      }
+
+      return { result: new Matrix(newArr) };
+    } else if (isNumeric(other)) {
+      let newArr: number[][] = [];
+      for (let i = 0; i < this.dimR; i++) {
+        newArr.push([]);
+        for (let j = 0; j < this.dimC; j++) {
+          newArr[i].push(this.matrix[i][j] % other.value);
+        }
+      }
+
+      return { result: new Matrix(newArr) };
+    }
+
+    this.expectedMatrixOrNumericError();
+  }
+
   public bitwiseAnd(other: Computable): Result {
     if (isMatrix(other)) {
       if (other.dimC != this.dimC || other.dimR != this.dimR) {
@@ -600,6 +633,13 @@ export class Numeric extends Computable {
   public more(other: Computable): LogicalResult {
     if (isNumeric(other)) {
       return { result: new Logical(this.value > other.value) };
+    }
+    this.error();
+  }
+
+  public mod(other: Computable): Result {
+    if (isNumeric(other)) {
+      return { result: new Numeric(this.value % other.value) };
     }
     this.error();
   }

@@ -60,6 +60,11 @@ export class Parser {
         scope: scope,
       },
       {
+        tokens: [TokenType.modulo],
+        igws: ignoreWhiteSpace,
+        scope: scope,
+      },
+      {
         tokens: [TokenType.mul, TokenType.div, TokenType.rdiv],
         igws: true,
         scope: scope,
