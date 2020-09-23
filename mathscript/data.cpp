@@ -91,6 +91,14 @@ PrimitivePtr Number::operator^(PrimitiveType &other) {
     throw UnsupportedOperationError("Number", ObjectTypeToString(other.get_object_type()), "^");
 }
 
+PrimitivePtr Number::operator>(PrimitiveType &other) {
+    auto num = dynamic_cast<Number *>(&other);
+    if (num) {
+        return make_shared<Boolean>(value > num->value);
+    }
+    throw UnsupportedOperationError("Number", ObjectTypeToString(other.get_object_type()), "^");
+}
+
 bool Number::operator==(PrimitiveType &other) {
     auto num = dynamic_cast<Number *>(&other);
     if (num) {
@@ -234,6 +242,10 @@ PrimitivePtr Matrix::operator^(PrimitiveType &other) {
         return shared_ptr<PrimitiveType>(m);
     }
     throw UnsupportedOperationError("Matrix", ObjectTypeToString(other.get_object_type()), "^");
+}
+
+PrimitivePtr Matrix::operator>(PrimitiveType &other) {
+    throw UnsupportedOperationError("Matrix", ObjectTypeToString(other.get_object_type()), "/");
 }
 
 bool Matrix::operator==(PrimitiveType &other) {

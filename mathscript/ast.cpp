@@ -109,7 +109,9 @@ Result FunctionDefinitionNode::eval(SymTable &table) {
 FunctionDefinitionNode::FunctionDefinitionNode(std::string name, std::vector<std::shared_ptr<VariableNode>> params,
                                                std::shared_ptr<CompoundNode> statements) : name(std::move(name)),
                                                                                            params(std::move(params)),
-                                                                                           statements(std::movestatements)) {}
+                                                                                           statements(std::move(
+                                                                                                   statements)) {}
+
 /**
  * returns empty node
  * @param table
@@ -154,6 +156,9 @@ Result BinaryOperatorNode::eval(SymTable &table) {
         case TokenType::kPow:
             out = *a ^ *b;
             break;
+        case TokenType::kRArrow:
+            out = *a > *b;
+            break;
         case TokenType::kEq:
             out = unique_ptr<PrimitiveType>(new Boolean{*a == *b});
             break;
@@ -193,6 +198,7 @@ Result BinaryOperatorNode::eval(SymTable &table) {
 BinaryOperatorNode::BinaryOperatorNode(ASTPtr left, Token t, ASTPtr right) : left(std::move(left)),
                                                                              op(std::move(t)),
                                                                              right(std::move(right)) {}
+
 /**
  * computes ternary operation
  * @param table

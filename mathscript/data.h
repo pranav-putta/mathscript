@@ -30,6 +30,7 @@ struct Object {
     ObjectType type;
 
     Object();
+
     Object(ObjectType type);
 };
 
@@ -45,6 +46,8 @@ struct PrimitiveType : Object {
     virtual std::shared_ptr<PrimitiveType> operator/(PrimitiveType &other) = 0;
 
     virtual std::shared_ptr<PrimitiveType> operator^(PrimitiveType &other) = 0;
+
+    virtual std::shared_ptr<PrimitiveType> operator>(PrimitiveType &other) = 0;
 
     virtual bool operator==(PrimitiveType &other) = 0;
 
@@ -72,6 +75,8 @@ struct Number : PrimitiveType {
 
     PrimitivePtr operator^(PrimitiveType &other) override;
 
+    PrimitivePtr operator>(PrimitiveType &other) override;
+
     bool operator==(PrimitiveType &other) override;
 
     bool operator!=(PrimitiveType &other) override;
@@ -95,6 +100,8 @@ struct Matrix : PrimitiveType {
     PrimitivePtr operator/(PrimitiveType &other) override;
 
     PrimitivePtr operator^(PrimitiveType &other) override;
+
+    PrimitivePtr operator>(PrimitiveType &other) override;
 
     bool operator==(PrimitiveType &other) override;
 

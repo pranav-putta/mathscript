@@ -63,10 +63,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/pranavputta/CLionProjects/mathscript
+CMAKE_SOURCE_DIR = /Users/pranavputta/GitHub/mathscript/mathscript
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/pranavputta/CLionProjects/mathscript/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/mathscript.dir/depend.make
@@ -79,120 +79,133 @@ include CMakeFiles/mathscript.dir/flags.make
 
 CMakeFiles/mathscript.dir/main.cpp.o: CMakeFiles/mathscript.dir/flags.make
 CMakeFiles/mathscript.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/mathscript.dir/main.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mathscript.dir/main.cpp.o -c /Users/pranavputta/CLionProjects/mathscript/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/mathscript.dir/main.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mathscript.dir/main.cpp.o -c /Users/pranavputta/GitHub/mathscript/mathscript/main.cpp
 
 CMakeFiles/mathscript.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mathscript.dir/main.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pranavputta/CLionProjects/mathscript/main.cpp > CMakeFiles/mathscript.dir/main.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pranavputta/GitHub/mathscript/mathscript/main.cpp > CMakeFiles/mathscript.dir/main.cpp.i
 
 CMakeFiles/mathscript.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mathscript.dir/main.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pranavputta/CLionProjects/mathscript/main.cpp -o CMakeFiles/mathscript.dir/main.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pranavputta/GitHub/mathscript/mathscript/main.cpp -o CMakeFiles/mathscript.dir/main.cpp.s
 
 CMakeFiles/mathscript.dir/lexer.cpp.o: CMakeFiles/mathscript.dir/flags.make
 CMakeFiles/mathscript.dir/lexer.cpp.o: ../lexer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/mathscript.dir/lexer.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mathscript.dir/lexer.cpp.o -c /Users/pranavputta/CLionProjects/mathscript/lexer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/mathscript.dir/lexer.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mathscript.dir/lexer.cpp.o -c /Users/pranavputta/GitHub/mathscript/mathscript/lexer.cpp
 
 CMakeFiles/mathscript.dir/lexer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mathscript.dir/lexer.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pranavputta/CLionProjects/mathscript/lexer.cpp > CMakeFiles/mathscript.dir/lexer.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pranavputta/GitHub/mathscript/mathscript/lexer.cpp > CMakeFiles/mathscript.dir/lexer.cpp.i
 
 CMakeFiles/mathscript.dir/lexer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mathscript.dir/lexer.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pranavputta/CLionProjects/mathscript/lexer.cpp -o CMakeFiles/mathscript.dir/lexer.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pranavputta/GitHub/mathscript/mathscript/lexer.cpp -o CMakeFiles/mathscript.dir/lexer.cpp.s
 
 CMakeFiles/mathscript.dir/token.cpp.o: CMakeFiles/mathscript.dir/flags.make
 CMakeFiles/mathscript.dir/token.cpp.o: ../token.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/mathscript.dir/token.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mathscript.dir/token.cpp.o -c /Users/pranavputta/CLionProjects/mathscript/token.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/mathscript.dir/token.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mathscript.dir/token.cpp.o -c /Users/pranavputta/GitHub/mathscript/mathscript/token.cpp
 
 CMakeFiles/mathscript.dir/token.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mathscript.dir/token.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pranavputta/CLionProjects/mathscript/token.cpp > CMakeFiles/mathscript.dir/token.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pranavputta/GitHub/mathscript/mathscript/token.cpp > CMakeFiles/mathscript.dir/token.cpp.i
 
 CMakeFiles/mathscript.dir/token.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mathscript.dir/token.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pranavputta/CLionProjects/mathscript/token.cpp -o CMakeFiles/mathscript.dir/token.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pranavputta/GitHub/mathscript/mathscript/token.cpp -o CMakeFiles/mathscript.dir/token.cpp.s
 
 CMakeFiles/mathscript.dir/errors.cpp.o: CMakeFiles/mathscript.dir/flags.make
 CMakeFiles/mathscript.dir/errors.cpp.o: ../errors.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/mathscript.dir/errors.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mathscript.dir/errors.cpp.o -c /Users/pranavputta/CLionProjects/mathscript/errors.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/mathscript.dir/errors.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mathscript.dir/errors.cpp.o -c /Users/pranavputta/GitHub/mathscript/mathscript/errors.cpp
 
 CMakeFiles/mathscript.dir/errors.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mathscript.dir/errors.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pranavputta/CLionProjects/mathscript/errors.cpp > CMakeFiles/mathscript.dir/errors.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pranavputta/GitHub/mathscript/mathscript/errors.cpp > CMakeFiles/mathscript.dir/errors.cpp.i
 
 CMakeFiles/mathscript.dir/errors.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mathscript.dir/errors.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pranavputta/CLionProjects/mathscript/errors.cpp -o CMakeFiles/mathscript.dir/errors.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pranavputta/GitHub/mathscript/mathscript/errors.cpp -o CMakeFiles/mathscript.dir/errors.cpp.s
 
 CMakeFiles/mathscript.dir/global.cpp.o: CMakeFiles/mathscript.dir/flags.make
 CMakeFiles/mathscript.dir/global.cpp.o: ../global.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/mathscript.dir/global.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mathscript.dir/global.cpp.o -c /Users/pranavputta/CLionProjects/mathscript/global.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/mathscript.dir/global.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mathscript.dir/global.cpp.o -c /Users/pranavputta/GitHub/mathscript/mathscript/global.cpp
 
 CMakeFiles/mathscript.dir/global.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mathscript.dir/global.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pranavputta/CLionProjects/mathscript/global.cpp > CMakeFiles/mathscript.dir/global.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pranavputta/GitHub/mathscript/mathscript/global.cpp > CMakeFiles/mathscript.dir/global.cpp.i
 
 CMakeFiles/mathscript.dir/global.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mathscript.dir/global.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pranavputta/CLionProjects/mathscript/global.cpp -o CMakeFiles/mathscript.dir/global.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pranavputta/GitHub/mathscript/mathscript/global.cpp -o CMakeFiles/mathscript.dir/global.cpp.s
 
 CMakeFiles/mathscript.dir/parser.cpp.o: CMakeFiles/mathscript.dir/flags.make
 CMakeFiles/mathscript.dir/parser.cpp.o: ../parser.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/mathscript.dir/parser.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mathscript.dir/parser.cpp.o -c /Users/pranavputta/CLionProjects/mathscript/parser.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/mathscript.dir/parser.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mathscript.dir/parser.cpp.o -c /Users/pranavputta/GitHub/mathscript/mathscript/parser.cpp
 
 CMakeFiles/mathscript.dir/parser.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mathscript.dir/parser.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pranavputta/CLionProjects/mathscript/parser.cpp > CMakeFiles/mathscript.dir/parser.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pranavputta/GitHub/mathscript/mathscript/parser.cpp > CMakeFiles/mathscript.dir/parser.cpp.i
 
 CMakeFiles/mathscript.dir/parser.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mathscript.dir/parser.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pranavputta/CLionProjects/mathscript/parser.cpp -o CMakeFiles/mathscript.dir/parser.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pranavputta/GitHub/mathscript/mathscript/parser.cpp -o CMakeFiles/mathscript.dir/parser.cpp.s
 
 CMakeFiles/mathscript.dir/ast.cpp.o: CMakeFiles/mathscript.dir/flags.make
 CMakeFiles/mathscript.dir/ast.cpp.o: ../ast.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/mathscript.dir/ast.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mathscript.dir/ast.cpp.o -c /Users/pranavputta/CLionProjects/mathscript/ast.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/mathscript.dir/ast.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mathscript.dir/ast.cpp.o -c /Users/pranavputta/GitHub/mathscript/mathscript/ast.cpp
 
 CMakeFiles/mathscript.dir/ast.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mathscript.dir/ast.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pranavputta/CLionProjects/mathscript/ast.cpp > CMakeFiles/mathscript.dir/ast.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pranavputta/GitHub/mathscript/mathscript/ast.cpp > CMakeFiles/mathscript.dir/ast.cpp.i
 
 CMakeFiles/mathscript.dir/ast.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mathscript.dir/ast.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pranavputta/CLionProjects/mathscript/ast.cpp -o CMakeFiles/mathscript.dir/ast.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pranavputta/GitHub/mathscript/mathscript/ast.cpp -o CMakeFiles/mathscript.dir/ast.cpp.s
 
 CMakeFiles/mathscript.dir/data.cpp.o: CMakeFiles/mathscript.dir/flags.make
 CMakeFiles/mathscript.dir/data.cpp.o: ../data.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/mathscript.dir/data.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mathscript.dir/data.cpp.o -c /Users/pranavputta/CLionProjects/mathscript/data.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/mathscript.dir/data.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mathscript.dir/data.cpp.o -c /Users/pranavputta/GitHub/mathscript/mathscript/data.cpp
 
 CMakeFiles/mathscript.dir/data.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mathscript.dir/data.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pranavputta/CLionProjects/mathscript/data.cpp > CMakeFiles/mathscript.dir/data.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pranavputta/GitHub/mathscript/mathscript/data.cpp > CMakeFiles/mathscript.dir/data.cpp.i
 
 CMakeFiles/mathscript.dir/data.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mathscript.dir/data.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pranavputta/CLionProjects/mathscript/data.cpp -o CMakeFiles/mathscript.dir/data.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pranavputta/GitHub/mathscript/mathscript/data.cpp -o CMakeFiles/mathscript.dir/data.cpp.s
 
 CMakeFiles/mathscript.dir/symtable.cpp.o: CMakeFiles/mathscript.dir/flags.make
 CMakeFiles/mathscript.dir/symtable.cpp.o: ../symtable.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/mathscript.dir/symtable.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mathscript.dir/symtable.cpp.o -c /Users/pranavputta/CLionProjects/mathscript/symtable.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/mathscript.dir/symtable.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mathscript.dir/symtable.cpp.o -c /Users/pranavputta/GitHub/mathscript/mathscript/symtable.cpp
 
 CMakeFiles/mathscript.dir/symtable.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mathscript.dir/symtable.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pranavputta/CLionProjects/mathscript/symtable.cpp > CMakeFiles/mathscript.dir/symtable.cpp.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pranavputta/GitHub/mathscript/mathscript/symtable.cpp > CMakeFiles/mathscript.dir/symtable.cpp.i
 
 CMakeFiles/mathscript.dir/symtable.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mathscript.dir/symtable.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pranavputta/CLionProjects/mathscript/symtable.cpp -o CMakeFiles/mathscript.dir/symtable.cpp.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pranavputta/GitHub/mathscript/mathscript/symtable.cpp -o CMakeFiles/mathscript.dir/symtable.cpp.s
+
+CMakeFiles/mathscript.dir/interpreter.cpp.o: CMakeFiles/mathscript.dir/flags.make
+CMakeFiles/mathscript.dir/interpreter.cpp.o: ../interpreter.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/mathscript.dir/interpreter.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mathscript.dir/interpreter.cpp.o -c /Users/pranavputta/GitHub/mathscript/mathscript/interpreter.cpp
+
+CMakeFiles/mathscript.dir/interpreter.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mathscript.dir/interpreter.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pranavputta/GitHub/mathscript/mathscript/interpreter.cpp > CMakeFiles/mathscript.dir/interpreter.cpp.i
+
+CMakeFiles/mathscript.dir/interpreter.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mathscript.dir/interpreter.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pranavputta/GitHub/mathscript/mathscript/interpreter.cpp -o CMakeFiles/mathscript.dir/interpreter.cpp.s
 
 # Object files for target mathscript
 mathscript_OBJECTS = \
@@ -204,7 +217,8 @@ mathscript_OBJECTS = \
 "CMakeFiles/mathscript.dir/parser.cpp.o" \
 "CMakeFiles/mathscript.dir/ast.cpp.o" \
 "CMakeFiles/mathscript.dir/data.cpp.o" \
-"CMakeFiles/mathscript.dir/symtable.cpp.o"
+"CMakeFiles/mathscript.dir/symtable.cpp.o" \
+"CMakeFiles/mathscript.dir/interpreter.cpp.o"
 
 # External object files for target mathscript
 mathscript_EXTERNAL_OBJECTS =
@@ -218,9 +232,10 @@ mathscript: CMakeFiles/mathscript.dir/parser.cpp.o
 mathscript: CMakeFiles/mathscript.dir/ast.cpp.o
 mathscript: CMakeFiles/mathscript.dir/data.cpp.o
 mathscript: CMakeFiles/mathscript.dir/symtable.cpp.o
+mathscript: CMakeFiles/mathscript.dir/interpreter.cpp.o
 mathscript: CMakeFiles/mathscript.dir/build.make
 mathscript: CMakeFiles/mathscript.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable mathscript"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable mathscript"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mathscript.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -233,6 +248,6 @@ CMakeFiles/mathscript.dir/clean:
 .PHONY : CMakeFiles/mathscript.dir/clean
 
 CMakeFiles/mathscript.dir/depend:
-	cd /Users/pranavputta/CLionProjects/mathscript/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pranavputta/CLionProjects/mathscript /Users/pranavputta/CLionProjects/mathscript /Users/pranavputta/CLionProjects/mathscript/cmake-build-debug /Users/pranavputta/CLionProjects/mathscript/cmake-build-debug /Users/pranavputta/CLionProjects/mathscript/cmake-build-debug/CMakeFiles/mathscript.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/pranavputta/GitHub/mathscript/mathscript /Users/pranavputta/GitHub/mathscript/mathscript /Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug /Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug /Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/CMakeFiles/mathscript.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/mathscript.dir/depend
 

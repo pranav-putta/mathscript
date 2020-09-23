@@ -8,38 +8,38 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug"/>
+				<Option working_dir="/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug"/>
+				<Option working_dir="/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug"/>
+				<Option working_dir="/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="mathscript">
-				<Option output="/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug/mathscript" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug"/>
+				<Option output="/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/mathscript" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -52,15 +52,15 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 mathscript"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 mathscript"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="mathscript/fast">
-				<Option output="/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug/mathscript" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug"/>
+				<Option output="/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/mathscript" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -73,65 +73,74 @@
 					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 mathscript/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/CLionProjects/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 mathscript/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/pranavputta/CLionProjects/mathscript/ast.cpp">
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/ast.cpp">
 			<Option target="mathscript"/>
 		</Unit>
-		<Unit filename="/Users/pranavputta/CLionProjects/mathscript/ast.h">
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/ast.h">
 			<Option target="mathscript"/>
 		</Unit>
-		<Unit filename="/Users/pranavputta/CLionProjects/mathscript/data.cpp">
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/data.cpp">
 			<Option target="mathscript"/>
 		</Unit>
-		<Unit filename="/Users/pranavputta/CLionProjects/mathscript/data.h">
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/data.h">
 			<Option target="mathscript"/>
 		</Unit>
-		<Unit filename="/Users/pranavputta/CLionProjects/mathscript/errors.cpp">
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/errors.cpp">
 			<Option target="mathscript"/>
 		</Unit>
-		<Unit filename="/Users/pranavputta/CLionProjects/mathscript/errors.h">
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/errors.h">
 			<Option target="mathscript"/>
 		</Unit>
-		<Unit filename="/Users/pranavputta/CLionProjects/mathscript/global.cpp">
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/global.cpp">
 			<Option target="mathscript"/>
 		</Unit>
-		<Unit filename="/Users/pranavputta/CLionProjects/mathscript/global.h">
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/global.h">
 			<Option target="mathscript"/>
 		</Unit>
-		<Unit filename="/Users/pranavputta/CLionProjects/mathscript/lexer.cpp">
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/interpreter.cpp">
 			<Option target="mathscript"/>
 		</Unit>
-		<Unit filename="/Users/pranavputta/CLionProjects/mathscript/lexer.h">
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/interpreter.h">
 			<Option target="mathscript"/>
 		</Unit>
-		<Unit filename="/Users/pranavputta/CLionProjects/mathscript/main.cpp">
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/lexer.cpp">
 			<Option target="mathscript"/>
 		</Unit>
-		<Unit filename="/Users/pranavputta/CLionProjects/mathscript/parser.cpp">
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/lexer.h">
 			<Option target="mathscript"/>
 		</Unit>
-		<Unit filename="/Users/pranavputta/CLionProjects/mathscript/parser.h">
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/main.cpp">
 			<Option target="mathscript"/>
 		</Unit>
-		<Unit filename="/Users/pranavputta/CLionProjects/mathscript/symtable.cpp">
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/napi.h">
 			<Option target="mathscript"/>
 		</Unit>
-		<Unit filename="/Users/pranavputta/CLionProjects/mathscript/symtable.h">
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/parser.cpp">
 			<Option target="mathscript"/>
 		</Unit>
-		<Unit filename="/Users/pranavputta/CLionProjects/mathscript/token.cpp">
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/parser.h">
 			<Option target="mathscript"/>
 		</Unit>
-		<Unit filename="/Users/pranavputta/CLionProjects/mathscript/token.h">
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/symtable.cpp">
 			<Option target="mathscript"/>
 		</Unit>
-		<Unit filename="/Users/pranavputta/CLionProjects/mathscript/CMakeLists.txt">
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/symtable.h">
+			<Option target="mathscript"/>
+		</Unit>
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/token.cpp">
+			<Option target="mathscript"/>
+		</Unit>
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/token.h">
+			<Option target="mathscript"/>
+		</Unit>
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

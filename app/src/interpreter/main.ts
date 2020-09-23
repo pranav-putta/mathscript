@@ -1,7 +1,7 @@
-import readlineSync from "readline-sync";
 import { interpretSource } from ".";
 
 while (true) {
-  let input = readlineSync.question(">  ");
+  let input = "1 + 1";
   console.log(interpretSource(input));
+  console.log(process.memoryUsage());
 }

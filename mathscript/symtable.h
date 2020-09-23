@@ -36,9 +36,9 @@ private:
     std::map<std::string, std::variant<Function, FunctionDef>> functions;
     std::map<std::string, ObjPtr> variables;
 
-    ObjPtr RecFindVariable(const SymTable *node, const std::string &name) const;
+    ObjPtr RecFindVariable(const SymTable &node, const std::string &name) const;
 
-    Result RecExecuteFunction(SymTable *node, const std::string &name, const std::vector<ObjPtr> &args);
+    Result RecExecuteFunction(const SymTable &node, const std::string &name, const std::vector<ObjPtr> &args);
 
 public:
     [[nodiscard]] ObjPtr FindVariable(const std::string &name) const;

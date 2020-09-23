@@ -15,7 +15,7 @@
  */
 ObjPtr SymTable::FindVariable(const std::string &name) const {
     // reached global symtable
-    return RecFindVariable(this, name);
+    return RecFindVariable(*this, name);
 }
 
 /**
@@ -26,15 +26,13 @@ ObjPtr SymTable::FindVariable(const std::string &name) const {
  * @param name variable name
  * @return pointer to variable value
  */
-ObjPtr SymTable::RecFindVariable(const SymTable *node, const std::string &name) const {
-    if (node == nullptr) {
+ObjPtr SymTable::RecFindVariable(const SymTable &node, const std::string &name) const {
+    if (node.variables.contains(name)) {
+        return node.variables.at(name);
+    } else if (node.parent == nullptr) {
         throw UndeclaredVariableError(name);
     }
-
-    if (node->variables.contains(name)) {
-        return node->variables.at(name);
-    }
-    return RecFindVariable(node->parent, name);
+    return RecFindVariable(*node.parent, name);
 }
 
 /**
@@ -53,7 +51,7 @@ void SymTable::AssignVariable(const std::string &name, ObjPtr obj) {
  * @return
  */
 Result SymTable::ExecuteFunction(const std::string &name, const std::vector<ObjPtr> &args) {
-    return RecExecuteFunction(this, name, args);
+    return RecExecuteFunction(*this, name, args);
 }
 
 /**
@@ -64,11 +62,11 @@ Result SymTable::ExecuteFunction(const std::string &name, const std::vector<ObjP
  * @return result pointer
  */
 Result
-SymTable::RecExecuteFunction(SymTable *node, const std::string &name, const std::vector<ObjPtr> &args) {
-    if (node->parent == nullptr) {
+SymTable::RecExecuteFunction(const SymTable &node, const std::string &name, const std::vector<ObjPtr> &args) {
+    if (node.parent == nullptr) {
         // global symbol table so check built-in C++ functions
-        if (node->functions.contains(name)) {
-            auto func = node->functions.at(name);
+        if (node.functions.contains(name)) {
+            auto func = node.functions.at(name);
             // if built in function, run, otherwise execute ast
             if (func.index() == 0) {
                 return std::get<Function>(func)(args);
@@ -78,8 +76,8 @@ SymTable::RecExecuteFunction(SymTable *node, const std::string &name, const std:
         }
     }
 
-    if (node->functions.contains(name)) {
-        auto func = std::get<FunctionDef>(node->functions.at(name));
+    if (node.functions.contains(name)) {
+        auto func = std::get<FunctionDef>(node.functions.at(name));
         auto newNode = new SymTable;
         newNode->parent = this;
 
@@ -95,10 +93,11 @@ SymTable::RecExecuteFunction(SymTable *node, const std::string &name, const std:
         if (eval.empty()) {
             throw EvaluationError("function didn't return anything");
         }
+        delete newNode;
         // return last output from function
         return Result{Result::Type::kSingle, eval[eval.size() - 1]};
     }
-    return RecExecuteFunction(node->parent, name, args);
+    return RecExecuteFunction(*node.parent, name, args);
 }
 
 /**

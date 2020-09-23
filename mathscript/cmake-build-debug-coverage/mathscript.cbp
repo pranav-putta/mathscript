@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="mathscript"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug-coverage"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug-coverage"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug-coverage"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="mathscript">
+				<Option output="/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug-coverage/mathscript" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug-coverage"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 mathscript"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="mathscript/fast">
+				<Option output="/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug-coverage/mathscript" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug-coverage"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/12.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 mathscript/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug-coverage/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/ast.cpp">
+			<Option target="mathscript"/>
+		</Unit>
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/ast.h">
+			<Option target="mathscript"/>
+		</Unit>
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/data.cpp">
+			<Option target="mathscript"/>
+		</Unit>
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/data.h">
+			<Option target="mathscript"/>
+		</Unit>
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/errors.cpp">
+			<Option target="mathscript"/>
+		</Unit>
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/errors.h">
+			<Option target="mathscript"/>
+		</Unit>
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/global.cpp">
+			<Option target="mathscript"/>
+		</Unit>
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/global.h">
+			<Option target="mathscript"/>
+		</Unit>
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/interpreter.cpp">
+			<Option target="mathscript"/>
+		</Unit>
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/interpreter.h">
+			<Option target="mathscript"/>
+		</Unit>
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/lexer.cpp">
+			<Option target="mathscript"/>
+		</Unit>
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/lexer.h">
+			<Option target="mathscript"/>
+		</Unit>
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/main.cpp">
+			<Option target="mathscript"/>
+		</Unit>
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/napi.h">
+			<Option target="mathscript"/>
+		</Unit>
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/parser.cpp">
+			<Option target="mathscript"/>
+		</Unit>
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/parser.h">
+			<Option target="mathscript"/>
+		</Unit>
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/symtable.cpp">
+			<Option target="mathscript"/>
+		</Unit>
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/symtable.h">
+			<Option target="mathscript"/>
+		</Unit>
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/token.cpp">
+			<Option target="mathscript"/>
+		</Unit>
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/token.h">
+			<Option target="mathscript"/>
+		</Unit>
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
