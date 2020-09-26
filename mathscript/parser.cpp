@@ -251,7 +251,7 @@ shared_ptr<FunctionCallNode> Parser::Function() {
     vector<ASTPtr> args;
     while (current_token.type != TokenType::kRParen) {
         args.push_back(Expr(true));
-        
+
         if (current_token.type == TokenType::kComma) {
             Eat(TokenType::kComma);
         } else {
