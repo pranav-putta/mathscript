@@ -194,18 +194,18 @@ CMakeFiles/mathscript.dir/symtable.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mathscript.dir/symtable.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pranavputta/GitHub/mathscript/mathscript/symtable.cpp -o CMakeFiles/mathscript.dir/symtable.cpp.s
 
-CMakeFiles/mathscript.dir/interpreter.cpp.o: CMakeFiles/mathscript.dir/flags.make
-CMakeFiles/mathscript.dir/interpreter.cpp.o: ../interpreter.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/mathscript.dir/interpreter.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mathscript.dir/interpreter.cpp.o -c /Users/pranavputta/GitHub/mathscript/mathscript/interpreter.cpp
+CMakeFiles/mathscript.dir/units.cpp.o: CMakeFiles/mathscript.dir/flags.make
+CMakeFiles/mathscript.dir/units.cpp.o: ../units.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/mathscript.dir/units.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mathscript.dir/units.cpp.o -c /Users/pranavputta/GitHub/mathscript/mathscript/units.cpp
 
-CMakeFiles/mathscript.dir/interpreter.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mathscript.dir/interpreter.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pranavputta/GitHub/mathscript/mathscript/interpreter.cpp > CMakeFiles/mathscript.dir/interpreter.cpp.i
+CMakeFiles/mathscript.dir/units.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mathscript.dir/units.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/pranavputta/GitHub/mathscript/mathscript/units.cpp > CMakeFiles/mathscript.dir/units.cpp.i
 
-CMakeFiles/mathscript.dir/interpreter.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mathscript.dir/interpreter.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pranavputta/GitHub/mathscript/mathscript/interpreter.cpp -o CMakeFiles/mathscript.dir/interpreter.cpp.s
+CMakeFiles/mathscript.dir/units.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mathscript.dir/units.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/pranavputta/GitHub/mathscript/mathscript/units.cpp -o CMakeFiles/mathscript.dir/units.cpp.s
 
 # Object files for target mathscript
 mathscript_OBJECTS = \
@@ -218,7 +218,7 @@ mathscript_OBJECTS = \
 "CMakeFiles/mathscript.dir/ast.cpp.o" \
 "CMakeFiles/mathscript.dir/data.cpp.o" \
 "CMakeFiles/mathscript.dir/symtable.cpp.o" \
-"CMakeFiles/mathscript.dir/interpreter.cpp.o"
+"CMakeFiles/mathscript.dir/units.cpp.o"
 
 # External object files for target mathscript
 mathscript_EXTERNAL_OBJECTS =
@@ -232,7 +232,7 @@ mathscript: CMakeFiles/mathscript.dir/parser.cpp.o
 mathscript: CMakeFiles/mathscript.dir/ast.cpp.o
 mathscript: CMakeFiles/mathscript.dir/data.cpp.o
 mathscript: CMakeFiles/mathscript.dir/symtable.cpp.o
-mathscript: CMakeFiles/mathscript.dir/interpreter.cpp.o
+mathscript: CMakeFiles/mathscript.dir/units.cpp.o
 mathscript: CMakeFiles/mathscript.dir/build.make
 mathscript: CMakeFiles/mathscript.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable mathscript"

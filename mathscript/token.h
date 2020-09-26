@@ -7,6 +7,7 @@
 
 #include <string>
 #include <variant>
+#include <map>
 
 
 /**
@@ -61,6 +62,7 @@ enum class TokenType {
  * holds a token with a specified @enum TokenType and value
  */
 struct Token {
+
     TokenType type;
     std::variant<double, std::string> value;
 

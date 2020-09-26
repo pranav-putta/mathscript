@@ -8,12 +8,12 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/pranavputta/GitHub/mathscript/mathscript/data.cpp" "/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/CMakeFiles/mathscript.dir/data.cpp.o"
   "/Users/pranavputta/GitHub/mathscript/mathscript/errors.cpp" "/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/CMakeFiles/mathscript.dir/errors.cpp.o"
   "/Users/pranavputta/GitHub/mathscript/mathscript/global.cpp" "/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/CMakeFiles/mathscript.dir/global.cpp.o"
-  "/Users/pranavputta/GitHub/mathscript/mathscript/interpreter.cpp" "/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/CMakeFiles/mathscript.dir/interpreter.cpp.o"
   "/Users/pranavputta/GitHub/mathscript/mathscript/lexer.cpp" "/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/CMakeFiles/mathscript.dir/lexer.cpp.o"
   "/Users/pranavputta/GitHub/mathscript/mathscript/main.cpp" "/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/CMakeFiles/mathscript.dir/main.cpp.o"
   "/Users/pranavputta/GitHub/mathscript/mathscript/parser.cpp" "/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/CMakeFiles/mathscript.dir/parser.cpp.o"
   "/Users/pranavputta/GitHub/mathscript/mathscript/symtable.cpp" "/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/CMakeFiles/mathscript.dir/symtable.cpp.o"
   "/Users/pranavputta/GitHub/mathscript/mathscript/token.cpp" "/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/CMakeFiles/mathscript.dir/token.cpp.o"
+  "/Users/pranavputta/GitHub/mathscript/mathscript/units.cpp" "/Users/pranavputta/GitHub/mathscript/mathscript/cmake-build-debug/CMakeFiles/mathscript.dir/units.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

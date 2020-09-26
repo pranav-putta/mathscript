@@ -62,7 +62,7 @@ void Parser::Eat(TokenType t) {
         } else {
             current = get<string>(current_token.value);
         }
-        throw EvaluationError("expected " + lexer.tokens[t] + ", but got " + current);
+        throw EvaluationError("expected " + Global::TokenMap()[t] + ", but got " + current);
     }
 }
 
@@ -91,7 +91,15 @@ ASTPtr Parser::Factor(bool ignoreWhiteSpace) {
         }
         case TokenType::kNum: {
             Eat(TokenType::kNum);
-            return make_shared<DataNode>(make_shared<Number>(get<double>(tok.value)));
+            auto data = make_shared<Number>(get<double>(tok.value));
+
+            // check for unit identifier
+            if (current_token.type == TokenType::kId &&
+                Global::UnitMap().contains(std::get<string>(current_token.value))) {
+                data->unit = Global::UnitMap().at(std::get<string>(current_token.value));
+                Eat(TokenType::kId);
+            }
+            return make_shared<DataNode>(data);
         }
         case TokenType::kLParen: {
             Eat(TokenType::kLParen);
@@ -243,6 +251,7 @@ shared_ptr<FunctionCallNode> Parser::Function() {
     vector<ASTPtr> args;
     while (current_token.type != TokenType::kRParen) {
         args.push_back(Expr(true));
+        
         if (current_token.type == TokenType::kComma) {
             Eat(TokenType::kComma);
         } else {
@@ -363,6 +372,8 @@ shared_ptr<VariableNode> Parser::Variable() {
     std::string name = get<string>(current_token.value);
     auto node = make_shared<VariableNode>(name);
     Eat(TokenType::kId);
+
+
     return node;
 }
 

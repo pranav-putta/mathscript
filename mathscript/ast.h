@@ -63,8 +63,11 @@ struct ComputableNode : ASTNode {
 
 struct VariableNode : ComputableNode {
     std::string name;
+    Unit unit;
 
     explicit VariableNode(std::string name);
+
+    VariableNode(std::string name, Unit unit);
 
     /**
      * finds variable value and returns

@@ -47,7 +47,12 @@ Object::Object() : type(ObjectType::kObject) {}
 
 /** Number Implementation */
 
-Number::Number(double d) : value(d), PrimitiveType(ObjectType::kNumber) {}
+Number::Number(double d) : value(d), PrimitiveType(ObjectType::kNumber), unit(Unit::kNone) {}
+
+Number::Number(double d, Unit unit) : value(d), PrimitiveType(ObjectType::kNumber), unit(unit) {}
+
+Number::Number(double d, ObjectType type) : value(d), PrimitiveType(type), unit(Unit::kNone) {}
+
 
 PrimitivePtr Number::operator+(PrimitiveType &other) {
     auto num = dynamic_cast<Number *>(&other);
@@ -115,7 +120,6 @@ bool Number::operator!=(PrimitiveType &other) {
     return false;
 }
 
-Number::Number(double d, ObjectType type) : value(d), PrimitiveType(type) {}
 
 /** Matrix implementation */
 Matrix::Matrix(matrix_t m, int dimR, int dimC) : matrix(std::move(m)), dimR(dimR), dimC(dimC),

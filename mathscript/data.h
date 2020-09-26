@@ -10,9 +10,11 @@
 #include <vector>
 #include <string>
 #include <any>
+#include "units.h"
 
 typedef std::pair<int, int> cell;
 typedef std::vector<std::vector<double>> matrix_t;
+
 
 enum class ObjectType {
     kNumber, kBoolean, kMatrix, kObject
@@ -59,11 +61,15 @@ struct PrimitiveType : Object {
 typedef std::shared_ptr<PrimitiveType> PrimitivePtr;
 
 struct Number : PrimitiveType {
+
     explicit Number(double d);
 
     Number(double d, ObjectType type);
 
-    double value{};
+    Number(double d, Unit unit);
+
+    double value;
+    Unit unit;
 
     PrimitivePtr operator+(PrimitiveType &other) override;
 

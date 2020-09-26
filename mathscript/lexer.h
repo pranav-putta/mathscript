@@ -51,9 +51,6 @@ private:
 
 
 public:
-    std::map<TokenType, std::string> tokens;
-    std::map<std::string, TokenType> reservedWords;
-
     explicit Lexer(std::string text);
 
     /**

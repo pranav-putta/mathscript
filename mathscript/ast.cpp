@@ -43,8 +43,9 @@ Result VariableNode::eval(SymTable &table) {
  * constructs variable node
  * @param name
  */
-VariableNode::VariableNode(std::string name) : name(std::move(name)) {
-}
+VariableNode::VariableNode(std::string name) : name(std::move(name)), unit(Unit::kNone) {}
+
+VariableNode::VariableNode(std::string name, Unit unit) : name(std::move(name)), unit(unit) {}
 
 /**
  * create variable in symbol table

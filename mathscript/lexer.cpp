@@ -13,8 +13,6 @@ using namespace std;
  * @param t
  */
 Lexer::Lexer(std::string t) : text(std::move(t)), position(0) {
-    tokens = kTokenMap();
-    reservedWords = kReservedWords();
     if (!text.empty()) {
         current_char = text.at(0);
     } else {
@@ -94,8 +92,8 @@ Token Lexer::TokenizeIdentifier() {
         str += current_char;
         Advance();
     }
-    int ct = reservedWords.count(str);
-    return ct != 0 ? Token{reservedWords[str], str} : Token{TokenType::kId, str};
+    int ct = Global::ReservedWords().count(str);
+    return ct != 0 ? Token{Global::ReservedWords()[str], str} : Token{TokenType::kId, str};
 }
 
 /**
@@ -117,7 +115,7 @@ Token Lexer::Tokenize() {
         return TokenizeIdentifier();
     } else {
         // check for each character
-        for (auto const &tok : tokens) {
+        for (auto const &tok : Global::TokenMap()) {
             string tok_str = tok.second, txt(1, current_char);
             int n = tok_str.length();
 

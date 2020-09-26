@@ -104,12 +104,6 @@
 		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/global.h">
 			<Option target="mathscript"/>
 		</Unit>
-		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/interpreter.cpp">
-			<Option target="mathscript"/>
-		</Unit>
-		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/interpreter.h">
-			<Option target="mathscript"/>
-		</Unit>
 		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/lexer.cpp">
 			<Option target="mathscript"/>
 		</Unit>
@@ -117,9 +111,6 @@
 			<Option target="mathscript"/>
 		</Unit>
 		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/main.cpp">
-			<Option target="mathscript"/>
-		</Unit>
-		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/napi.h">
 			<Option target="mathscript"/>
 		</Unit>
 		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/parser.cpp">
@@ -138,6 +129,12 @@
 			<Option target="mathscript"/>
 		</Unit>
 		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/token.h">
+			<Option target="mathscript"/>
+		</Unit>
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/units.cpp">
+			<Option target="mathscript"/>
+		</Unit>
+		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/units.h">
 			<Option target="mathscript"/>
 		</Unit>
 		<Unit filename="/Users/pranavputta/GitHub/mathscript/mathscript/CMakeLists.txt">

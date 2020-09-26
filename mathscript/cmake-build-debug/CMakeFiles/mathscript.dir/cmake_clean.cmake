@@ -3,12 +3,12 @@ file(REMOVE_RECURSE
   "CMakeFiles/mathscript.dir/data.cpp.o"
   "CMakeFiles/mathscript.dir/errors.cpp.o"
   "CMakeFiles/mathscript.dir/global.cpp.o"
-  "CMakeFiles/mathscript.dir/interpreter.cpp.o"
   "CMakeFiles/mathscript.dir/lexer.cpp.o"
   "CMakeFiles/mathscript.dir/main.cpp.o"
   "CMakeFiles/mathscript.dir/parser.cpp.o"
   "CMakeFiles/mathscript.dir/symtable.cpp.o"
   "CMakeFiles/mathscript.dir/token.cpp.o"
+  "CMakeFiles/mathscript.dir/units.cpp.o"
   "mathscript"
   "mathscript.pdb"
 )

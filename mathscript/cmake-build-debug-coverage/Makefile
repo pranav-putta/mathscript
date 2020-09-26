@@ -251,33 +251,6 @@ global.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mathscript.dir/build.make CMakeFiles/mathscript.dir/global.cpp.s
 .PHONY : global.cpp.s
 
-interpreter.o: interpreter.cpp.o
-
-.PHONY : interpreter.o
-
-# target to build an object file
-interpreter.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mathscript.dir/build.make CMakeFiles/mathscript.dir/interpreter.cpp.o
-.PHONY : interpreter.cpp.o
-
-interpreter.i: interpreter.cpp.i
-
-.PHONY : interpreter.i
-
-# target to preprocess a source file
-interpreter.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mathscript.dir/build.make CMakeFiles/mathscript.dir/interpreter.cpp.i
-.PHONY : interpreter.cpp.i
-
-interpreter.s: interpreter.cpp.s
-
-.PHONY : interpreter.s
-
-# target to generate assembly for a file
-interpreter.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mathscript.dir/build.make CMakeFiles/mathscript.dir/interpreter.cpp.s
-.PHONY : interpreter.cpp.s
-
 lexer.o: lexer.cpp.o
 
 .PHONY : lexer.o
@@ -413,6 +386,33 @@ token.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mathscript.dir/build.make CMakeFiles/mathscript.dir/token.cpp.s
 .PHONY : token.cpp.s
 
+units.o: units.cpp.o
+
+.PHONY : units.o
+
+# target to build an object file
+units.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mathscript.dir/build.make CMakeFiles/mathscript.dir/units.cpp.o
+.PHONY : units.cpp.o
+
+units.i: units.cpp.i
+
+.PHONY : units.i
+
+# target to preprocess a source file
+units.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mathscript.dir/build.make CMakeFiles/mathscript.dir/units.cpp.i
+.PHONY : units.cpp.i
+
+units.s: units.cpp.s
+
+.PHONY : units.s
+
+# target to generate assembly for a file
+units.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/mathscript.dir/build.make CMakeFiles/mathscript.dir/units.cpp.s
+.PHONY : units.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -434,9 +434,6 @@ help:
 	@echo "... global.o"
 	@echo "... global.i"
 	@echo "... global.s"
-	@echo "... interpreter.o"
-	@echo "... interpreter.i"
-	@echo "... interpreter.s"
 	@echo "... lexer.o"
 	@echo "... lexer.i"
 	@echo "... lexer.s"
@@ -452,6 +449,9 @@ help:
 	@echo "... token.o"
 	@echo "... token.i"
 	@echo "... token.s"
+	@echo "... units.o"
+	@echo "... units.i"
+	@echo "... units.s"
 .PHONY : help
 
 

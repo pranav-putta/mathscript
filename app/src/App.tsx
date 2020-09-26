@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import "process";
-const { interpret } = require("mathscript");
+import { interpretSource } from "./interpreter";
 
 interface Props {}
 
@@ -21,10 +21,6 @@ class App extends React.Component<Props, State> {
 
   onInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     let input: string = event.target.value;
-    let out: string = interpret(input);
-    this.setState({ input: input, results: out });
-
-    /*
     let out = interpretSource(input.trim());
     if (typeof out === "string") {
       this.setState({ input: input, results: out });
@@ -36,9 +32,8 @@ class App extends React.Component<Props, State> {
         }
         result += "\n";
       }
-      result += "\n " + JSON.stringify(process.memoryUsage());
       this.setState({ input: input, results: result });
-    }*/
+    }
   };
 
   render() {
