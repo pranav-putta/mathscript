@@ -1,2 +1,2 @@
-# pranavputta22.mathscript.io
+mathscript
 scripting calculator for mathematical functions, optimized for matrix calculations
