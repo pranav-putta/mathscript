@@ -1,59 +1,67 @@
-import React from "react";
-import "./App.css";
-import "process";
-import { interpretSource } from "./interpreter";
+import React, { useEffect } from "react";
+import { Platform, StyleSheet, TextInput, View } from "react-native";
 
 interface Props {}
-
 interface State {
-  input: string;
-  results: string;
+  instance: any;
 }
 
-class App extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      input: "",
-      results: "",
-    };
+export default class App extends React.Component<Props, State> {
+  componentDidMount() {
   }
 
-  onInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    let input: string = event.target.value;
-    let out = interpretSource(input.trim());
-    if (typeof out === "string") {
-      this.setState({ input: input, results: out });
-    } else {
-      let result = "";
-      for (let o of out) {
-        if (o !== undefined) {
-          result += o.toString();
-        }
-        result += "\n";
-      }
-      this.setState({ input: input, results: result });
+  loadWasm = async () => {
+    try {
+      const wasm = await import("mathscript");
+      alert(JSON.stringify(wasm));
+      this.setState({ instance: wasm });
+    } catch (err) {
+      console.error(`Unexpected error in loadWasm. [Message: ${err.message}]`);
     }
   };
 
   render() {
+    const wasmURL = "http://localhost:3000/mathscript.wasm";
+    this.loadWasm()
     return (
-      <div className="App">
-        <header className="App-header">
-          <textarea
-            className="Input-Text-Area"
-            value={this.state.input}
-            onChange={this.onInputChange}
-          />
-          <textarea
-            disabled={true}
-            value={this.state.results}
-            className="Result-Text-Area"
-          />
-        </header>
-      </div>
+      <View style={styles.container}>
+        <TextInput multiline={true} style={styles.input} />
+        <TextInput multiline={true} style={styles.output} />
+      </View>
     );
   }
 }
 
-export default App;
+const height = Platform.OS == "web" ? "100vh" : "100%";
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    flexDirection: "row",
+    height: height,
+  },
+  input: {
+    flex: 6,
+    padding: 10,
+    backgroundColor: "#282c34",
+    color: "white",
+  },
+  output: {
+    flex: 4,
+    padding: 10,
+    color: "blue",
+  },
+});
+
+export const injectWebCss = () => {
+  // Only on web
+  if (!(Platform.OS == "web")) return;
+
+  // Inject textarea outline style
+  const style = document.createElement("style");
+  style.textContent = `textarea, select, input, button { outline: none!important; }`;
+  return document.head.append(style);
+};
+
+injectWebCss();

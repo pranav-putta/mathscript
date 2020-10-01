@@ -1,0 +1,21 @@
+{
+    "git.ignoreLimitWarning": true,
+    "files.associations": {
+        "*.rmd": "markdown",
+        "optional": "cpp",
+        "istream": "cpp",
+        "ostream": "cpp",
+        "ratio": "cpp",
+        "system_error": "cpp",
+        "array": "cpp",
+        "functional": "cpp",
+        "tuple": "cpp",
+        "type_traits": "cpp",
+        "utility": "cpp",
+        "variant": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "ranges": "cpp"
+    },
+    "cmake.configureOnOpen": true
+}
