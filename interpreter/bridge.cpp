@@ -22,12 +22,15 @@ extern "C"
             ASTPtr root = parser.Parse();
             Result res = root->eval(SymTable::ConstructGlobalTable());
 
+            Number *num;
             for (auto &c : get<vector<ObjPtr>>(res.data))
             {
-                auto num = dynamic_cast<Number *>(c.get());
-                return num->value;
+                num = dynamic_cast<Number *>(c.get());
             }
-        } catch(exception ex) {
+            return num->value;
+        }
+        catch (exception ex)
+        {
             return -1;
         }
         return -1;

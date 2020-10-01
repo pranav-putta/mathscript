@@ -1,3 +1,4 @@
+import { time } from "console";
 import React from "react";
 import { View, StyleSheet, Text, TextInput } from "react-native";
 import interpreter from "../interpreter/interpreter.js";
@@ -7,7 +8,7 @@ interface Props {}
 interface State {
   input: string;
   result: any;
-  interpret: (input: string) => any;
+  interpret: (input: string) => Promise<any>;
 }
 
 export default class Home extends React.Component<Props, State> {
@@ -17,9 +18,13 @@ export default class Home extends React.Component<Props, State> {
       input: "",
       result: "",
       interpret: (input: string) => {
-        return "interpreter unloaded";
+        return Promise.resolve("interpreter unloaded");
       },
     };
+  }
+
+  componentDidMount() {
+    this.load();
   }
 
   load = async () => {
@@ -28,16 +33,25 @@ export default class Home extends React.Component<Props, State> {
       noExitRuntime: true,
     });
     const interpret = mod.cwrap("interpret", "number", ["string"]);
-    this.setState({ interpret: interpret });
+    const func = async (x: string) => {
+      return interpret(x);
+    };
+    this.setState({ interpret: func });
   };
 
-  componentDidMount() {
-    this.load();
-  }
-
   inputChange = (text: string) => {
-    this.setState({ input: text });
-    this.setState({ result: this.state.interpret(text) });
+    let now = Date.now();
+    this.setState({ input: text, result: "loading..." }, () => {
+      this.state
+        .interpret(text)
+        .then((out) => {
+          let t = Date.now() - now;
+          this.setState({ result: out });
+        })
+        .catch((err) => {
+          this.setState({ result: "couldn't interpret!" });
+        });
+    });
   };
 
   render() {
@@ -66,8 +80,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   input: {
-    flex: 3,
-    backgroundColor: "#263238",
+    flex: 4,
+    backgroundColor: "#282c34",
     color: "white",
   },
   output: {
@@ -75,8 +89,9 @@ const styles = StyleSheet.create({
     color: "#0288d1",
   },
   textInput: {
-    fontFamily: "sans-serif-thin",
-    fontSize: 20,
+    fontFamily: "sans-serif",
+    fontSize: 24,
+    fontWeight: "400",
     padding: 12,
   },
 });

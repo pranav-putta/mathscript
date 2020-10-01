@@ -68,10 +68,10 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/pranavputta/GitHub/mathscript/interpreter/cpp
+CMAKE_SOURCE_DIR = /Users/pranavputta/GitHub/mathscript/interpreter
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/pranavputta/GitHub/mathscript/interpreter/cpp/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/pranavputta/GitHub/mathscript/interpreter/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -100,9 +100,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/pranavputta/GitHub/mathscript/interpreter/cpp/cmake-build-debug/CMakeFiles /Users/pranavputta/GitHub/mathscript/interpreter/cpp/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/pranavputta/GitHub/mathscript/interpreter/cmake-build-debug/CMakeFiles /Users/pranavputta/GitHub/mathscript/interpreter/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/pranavputta/GitHub/mathscript/interpreter/cpp/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/pranavputta/GitHub/mathscript/interpreter/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -278,33 +278,6 @@ lexer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/mathscript.dir/build.make CMakeFiles/mathscript.dir/lexer.cpp.s
 .PHONY : lexer.cpp.s
 
-main.o: main.cpp.o
-
-.PHONY : main.o
-
-# target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mathscript.dir/build.make CMakeFiles/mathscript.dir/main.cpp.o
-.PHONY : main.cpp.o
-
-main.i: main.cpp.i
-
-.PHONY : main.i
-
-# target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mathscript.dir/build.make CMakeFiles/mathscript.dir/main.cpp.i
-.PHONY : main.cpp.i
-
-main.s: main.cpp.s
-
-.PHONY : main.s
-
-# target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/mathscript.dir/build.make CMakeFiles/mathscript.dir/main.cpp.s
-.PHONY : main.cpp.s
-
 parser.o: parser.cpp.o
 
 .PHONY : parser.o
@@ -437,9 +410,6 @@ help:
 	@echo "... lexer.o"
 	@echo "... lexer.i"
 	@echo "... lexer.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
 	@echo "... parser.o"
 	@echo "... parser.i"
 	@echo "... parser.s"

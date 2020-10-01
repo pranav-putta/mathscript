@@ -36,16 +36,6 @@ CMakeFiles/mathscript.dir/lexer.cpp.o: ../lexer.h
 CMakeFiles/mathscript.dir/lexer.cpp.o: ../token.h
 CMakeFiles/mathscript.dir/lexer.cpp.o: ../units.h
 
-CMakeFiles/mathscript.dir/main.cpp.o: ../ast.h
-CMakeFiles/mathscript.dir/main.cpp.o: ../data.h
-CMakeFiles/mathscript.dir/main.cpp.o: ../global.h
-CMakeFiles/mathscript.dir/main.cpp.o: ../lexer.h
-CMakeFiles/mathscript.dir/main.cpp.o: ../main.cpp
-CMakeFiles/mathscript.dir/main.cpp.o: ../parser.h
-CMakeFiles/mathscript.dir/main.cpp.o: ../symtable.h
-CMakeFiles/mathscript.dir/main.cpp.o: ../token.h
-CMakeFiles/mathscript.dir/main.cpp.o: ../units.h
-
 CMakeFiles/mathscript.dir/parser.cpp.o: ../ast.h
 CMakeFiles/mathscript.dir/parser.cpp.o: ../data.h
 CMakeFiles/mathscript.dir/parser.cpp.o: ../errors.h
