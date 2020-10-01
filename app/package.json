@@ -22,7 +22,7 @@
   },
   "scripts": {
     "eject": "react-scripts eject",
-    "start": "react-app-rewired start",
+    "start": "./build.sh && react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "asbuild:untouched": "asc assembly/index.ts --target debug",
