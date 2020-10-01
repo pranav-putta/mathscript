@@ -4,12 +4,17 @@
 #include "ast.h"
 #include "data.h"
 
+#include <iostream>
+#include <emscripten.h>
+
 using namespace std;
 
 extern "C"
 {
-    double interpret(string input)
+    EMSCRIPTEN_KEEPALIVE
+    double interpret(const char* rawInput)
     {
+	std::string input(rawInput);
         Lexer lexer(input);
         Parser parser(lexer);
         ASTPtr root = parser.Parse();
@@ -22,9 +27,8 @@ extern "C"
         }
         return -1;
     }
-
-    int test()
-    {
-        return 0;
-    }
+   EMSCRIPTEN_KEEPALIVE
+   int test() {
+     return -1;
+   }
 }
