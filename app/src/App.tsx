@@ -1,24 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
+  let [out, setOutput] = useState("");
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div style={{ display: "flex", flexDirection: "row", flex: 1 }}>
+        <textarea
+          className="Input"
+          onChange={(evt) => {
+            let input = evt.target.value;
+            import("wasm").then((module) => {
+              let data = module.lib_interpret(input);
+              setOutput(JSON.stringify(data));
+            });
+          }}
+          style={{
+            flex: 2,
+            width: "100%",
+            height: "100%",
+            color: "white",
+          }}
+        />
+        <textarea
+          className="Output"
+          disabled={true}
+          value={out}
+          style={{
+            flex: 1,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "white",
+          }}
+        />
+      </div>
     </div>
   );
 }
