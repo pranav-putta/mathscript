@@ -1,0 +1,1 @@
+pub const RESERVED_WORDS: [&'static str; 2] = ["true", "false"];

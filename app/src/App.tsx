@@ -1,36 +1,26 @@
-import React from "react";
-import { View, Text, StyleSheet, Platform } from "react-native";
-import Home from "./screens/Home";
+import React from 'react';
+import logo from './logo.svg';
+import './App.css';
 
-class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Home />
-      </View>
-    );
-  }
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.tsx</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
 }
-
-const height = Platform.OS == "web" ? "100vh" : "100%";
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    height: height,
-  },
-});
-
-export const injectWebCss = () => {
-  // Only on web
-  if (Platform.OS != "web") return;
-
-  // Inject style
-  const style = document.createElement("style");
-  style.textContent = `textarea, select, input, button { outline: none!important; }`;
-  return document.head.append(style);
-};
-
-injectWebCss();
 
 export default App;

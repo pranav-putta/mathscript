@@ -1,0 +1,24 @@
+# Block - encompasses the program, series of statements
+block: (statement '\n')*
+
+# Statement - a line of code that can be evaluated
+statement: comment | id | assign | block | fn_decl | if | while | expr
+comment: '#' @until '\n'
+id: @str
+assign: id '=' literal
+fn_decl: id '(' (id ',')* ')' '=>' block
+if: 'if' expr block
+while: 'while' expr block
+
+# Expression - a section of code that computes to something
+expr: term | '(' expr ')' | unary | binary | ternary
+unary: ('+' | '-' | '!') expr
+binary: expr (('^') > ('%') > ('*' | '/') > ('+' | '-') > ('&' | '|') > ('<=' | '>=' | '<' | '>' | '==' | '!=') > ('&&') > ('||')) expr
+
+term: literal | var | fn_call
+var: @str
+literal: @num | @bool | '"' @str '"' | matrix
+matrix: '[' (row ';')* row ']'
+row: ((expr (',' | '\s'))*
+fn_call: id '(' (expr ',')* ')'
+ternary: expr '?' expr ':' expr
