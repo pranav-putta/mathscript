@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/mathscript/static/css/main.2e9a96ae.chunk.css",
-    "main.js": "/mathscript/static/js/main.eb027bd0.chunk.js",
-    "main.js.map": "/mathscript/static/js/main.eb027bd0.chunk.js.map",
-    "runtime-main.js": "/mathscript/static/js/runtime-main.7403e6af.js",
-    "runtime-main.js.map": "/mathscript/static/js/runtime-main.7403e6af.js.map",
-    "static/js/2.6274861b.chunk.js": "/mathscript/static/js/2.6274861b.chunk.js",
-    "static/js/2.6274861b.chunk.js.map": "/mathscript/static/js/2.6274861b.chunk.js.map",
-    "static/js/3.24d13553.chunk.js": "/mathscript/static/js/3.24d13553.chunk.js",
-    "6ab1ac505779526a54c5.module.wasm": "/mathscript/6ab1ac505779526a54c5.module.wasm",
-    "static/js/3.24d13553.chunk.js.map": "/mathscript/static/js/3.24d13553.chunk.js.map",
+    "main.css": "/mathscript/static/css/main.975718ee.chunk.css",
+    "main.js": "/mathscript/static/js/main.db41b891.chunk.js",
+    "main.js.map": "/mathscript/static/js/main.db41b891.chunk.js.map",
+    "runtime-main.js": "/mathscript/static/js/runtime-main.9692375f.js",
+    "runtime-main.js.map": "/mathscript/static/js/runtime-main.9692375f.js.map",
+    "static/js/2.d580ab45.chunk.js": "/mathscript/static/js/2.d580ab45.chunk.js",
+    "static/js/2.d580ab45.chunk.js.map": "/mathscript/static/js/2.d580ab45.chunk.js.map",
+    "static/js/3.cb51e404.chunk.js": "/mathscript/static/js/3.cb51e404.chunk.js",
+    "aadfb27800b3659342e7.module.wasm": "/mathscript/aadfb27800b3659342e7.module.wasm",
+    "static/js/3.cb51e404.chunk.js.map": "/mathscript/static/js/3.cb51e404.chunk.js.map",
     "static/js/4.c3e7c082.chunk.js": "/mathscript/static/js/4.c3e7c082.chunk.js",
     "static/js/4.c3e7c082.chunk.js.map": "/mathscript/static/js/4.c3e7c082.chunk.js.map",
     "index.html": "/mathscript/index.html",
-    "static/css/main.2e9a96ae.chunk.css.map": "/mathscript/static/css/main.2e9a96ae.chunk.css.map",
-    "static/js/2.6274861b.chunk.js.LICENSE.txt": "/mathscript/static/js/2.6274861b.chunk.js.LICENSE.txt"
+    "static/css/main.975718ee.chunk.css.map": "/mathscript/static/css/main.975718ee.chunk.css.map",
+    "static/js/2.d580ab45.chunk.js.LICENSE.txt": "/mathscript/static/js/2.d580ab45.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.7403e6af.js",
-    "static/js/2.6274861b.chunk.js",
-    "static/css/main.2e9a96ae.chunk.css",
-    "static/js/main.eb027bd0.chunk.js"
+    "static/js/runtime-main.9692375f.js",
+    "static/js/2.d580ab45.chunk.js",
+    "static/css/main.975718ee.chunk.css",
+    "static/js/main.db41b891.chunk.js"
   ]
 }
