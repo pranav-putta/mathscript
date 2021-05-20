@@ -3,13 +3,13 @@
     "main.css": "/mathscript/static/css/main.975718ee.chunk.css",
     "main.js": "/mathscript/static/js/main.717672ab.chunk.js",
     "main.js.map": "/mathscript/static/js/main.717672ab.chunk.js.map",
-    "runtime-main.js": "/mathscript/static/js/runtime-main.b1e01bfb.js",
-    "runtime-main.js.map": "/mathscript/static/js/runtime-main.b1e01bfb.js.map",
+    "runtime-main.js": "/mathscript/static/js/runtime-main.bf9c3c04.js",
+    "runtime-main.js.map": "/mathscript/static/js/runtime-main.bf9c3c04.js.map",
     "static/js/2.d580ab45.chunk.js": "/mathscript/static/js/2.d580ab45.chunk.js",
     "static/js/2.d580ab45.chunk.js.map": "/mathscript/static/js/2.d580ab45.chunk.js.map",
-    "static/js/3.d75e722e.chunk.js": "/mathscript/static/js/3.d75e722e.chunk.js",
-    "ed70b1996036f15fe62b.module.wasm": "/mathscript/ed70b1996036f15fe62b.module.wasm",
-    "static/js/3.d75e722e.chunk.js.map": "/mathscript/static/js/3.d75e722e.chunk.js.map",
+    "static/js/3.65cd5138.chunk.js": "/mathscript/static/js/3.65cd5138.chunk.js",
+    "3d5975e7e44a2984e249.module.wasm": "/mathscript/3d5975e7e44a2984e249.module.wasm",
+    "static/js/3.65cd5138.chunk.js.map": "/mathscript/static/js/3.65cd5138.chunk.js.map",
     "static/js/4.c3e7c082.chunk.js": "/mathscript/static/js/4.c3e7c082.chunk.js",
     "static/js/4.c3e7c082.chunk.js.map": "/mathscript/static/js/4.c3e7c082.chunk.js.map",
     "index.html": "/mathscript/index.html",
@@ -17,7 +17,7 @@
     "static/js/2.d580ab45.chunk.js.LICENSE.txt": "/mathscript/static/js/2.d580ab45.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.b1e01bfb.js",
+    "static/js/runtime-main.bf9c3c04.js",
     "static/js/2.d580ab45.chunk.js",
     "static/css/main.975718ee.chunk.css",
     "static/js/main.717672ab.chunk.js"
