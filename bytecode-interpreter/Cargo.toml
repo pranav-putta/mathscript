@@ -1,0 +1,19 @@
+[package]
+name = "bytecode-interpreter"
+version = "0.1.0"
+authors = ["Pranav Putta <pranav.putta22@gmail.com>"]
+edition = "2018"
+[lib]
+crate-type = ["cdylib"]
+path = "src/lib.rs"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+num-bigint = "0.4.0"
+bigdecimal = "0.2.0"
+num-traits = "0.2"
+num-derive = "0.2"
+lazy_static = "1.4.0"
+wasm-bindgen = { version = "0.2.34", features = ["serde-serialize"] }
+serde = { version = "1.0", features = ["derive"] }

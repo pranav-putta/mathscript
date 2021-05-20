@@ -112,6 +112,10 @@ impl GrammarParser {
         // pattern: id: ...
         let tok = self.eat(TokenType::Id).unwrap();
 
+        // check if type is operation
+        if tok == TokenValue::String("op".to_string()) {
+
+        }
         self.eat(TokenType::Colon);
         let expr = self.parse_ordered();
         self.eat_new_lines();
@@ -147,8 +151,8 @@ impl GrammarParser {
             children.push(variant);
 
             let next = self.lexer.peek_token().unwrap();
-            if next.token == TokenType::Bar {
-                self.eat(TokenType::Bar);
+            if next.token == TokenType::OrBit {
+                self.eat(TokenType::OrBit);
             } else {
                 break;
             }
@@ -161,7 +165,7 @@ impl GrammarParser {
     fn parse_expr(&mut self) -> GrammarNode {
         let mut next = self.lexer.peek_token().unwrap();
         let mut children = Vec::new();
-        while next.token != TokenType::Bar && next.token != TokenType::EndL {
+        while next.token != TokenType::OrBit && next.token != TokenType::EndL {
             let mut new_node: Option<GrammarNode> = None;
 
             if next.token == TokenType::LParen {
@@ -196,7 +200,6 @@ impl GrammarParser {
                     }
                 }
             } else {
-                next = self.lexer.peek_token().unwrap();
                 if next.token == TokenType::Id {
                     let id = self.eat(Id).unwrap();
                     new_node = Some(GrammarNode::with_val(GrammarNodeType::Id, id));

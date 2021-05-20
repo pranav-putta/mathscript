@@ -19,6 +19,14 @@
   color: black;
 }
 
+.Disassembly {
+  font-family: monospace;
+  font-size: large;
+  padding: 10px;
+  color: #00e676;
+  background-color: black;
+}
+
 textarea {
   border: none;
   overflow: auto;

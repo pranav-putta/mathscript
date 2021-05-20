@@ -1,213 +1,67 @@
 {
-    "factor": GrammarNode {
-        n_type: Expr,
+    "term": GrammarNode {
+        prop: Variation,
         value: None,
         children: [
             GrammarNode {
-                n_type: Id,
+                prop: Id,
                 value: Some(
                     String(
-                        "expr",
+                        "literal",
                     ),
                 ),
                 children: [],
             },
             GrammarNode {
-                n_type: Order,
-                value: None,
-                children: [
-                    GrammarNode {
-                        n_type: Literal,
-                        value: Some(
-                            String(
-                                "^",
-                            ),
-                        ),
-                        children: [],
-                    },
-                    GrammarNode {
-                        n_type: Literal,
-                        value: Some(
-                            String(
-                                "%",
-                            ),
-                        ),
-                        children: [],
-                    },
-                    GrammarNode {
-                        n_type: Variation,
-                        value: None,
-                        children: [
-                            GrammarNode {
-                                n_type: Literal,
-                                value: Some(
-                                    String(
-                                        "*",
-                                    ),
-                                ),
-                                children: [],
-                            },
-                            GrammarNode {
-                                n_type: Literal,
-                                value: Some(
-                                    String(
-                                        "/",
-                                    ),
-                                ),
-                                children: [],
-                            },
-                        ],
-                    },
-                    GrammarNode {
-                        n_type: Variation,
-                        value: None,
-                        children: [
-                            GrammarNode {
-                                n_type: Literal,
-                                value: Some(
-                                    String(
-                                        "+",
-                                    ),
-                                ),
-                                children: [],
-                            },
-                            GrammarNode {
-                                n_type: Literal,
-                                value: Some(
-                                    String(
-                                        "-",
-                                    ),
-                                ),
-                                children: [],
-                            },
-                        ],
-                    },
-                    GrammarNode {
-                        n_type: Variation,
-                        value: None,
-                        children: [
-                            GrammarNode {
-                                n_type: Literal,
-                                value: Some(
-                                    String(
-                                        "&",
-                                    ),
-                                ),
-                                children: [],
-                            },
-                            GrammarNode {
-                                n_type: Literal,
-                                value: Some(
-                                    String(
-                                        "|",
-                                    ),
-                                ),
-                                children: [],
-                            },
-                        ],
-                    },
-                    GrammarNode {
-                        n_type: Variation,
-                        value: None,
-                        children: [
-                            GrammarNode {
-                                n_type: Literal,
-                                value: Some(
-                                    String(
-                                        "<=",
-                                    ),
-                                ),
-                                children: [],
-                            },
-                            GrammarNode {
-                                n_type: Literal,
-                                value: Some(
-                                    String(
-                                        ">=",
-                                    ),
-                                ),
-                                children: [],
-                            },
-                            GrammarNode {
-                                n_type: Literal,
-                                value: Some(
-                                    String(
-                                        "<",
-                                    ),
-                                ),
-                                children: [],
-                            },
-                            GrammarNode {
-                                n_type: Literal,
-                                value: Some(
-                                    String(
-                                        ">",
-                                    ),
-                                ),
-                                children: [],
-                            },
-                            GrammarNode {
-                                n_type: Literal,
-                                value: Some(
-                                    String(
-                                        "==",
-                                    ),
-                                ),
-                                children: [],
-                            },
-                            GrammarNode {
-                                n_type: Literal,
-                                value: Some(
-                                    String(
-                                        "!=",
-                                    ),
-                                ),
-                                children: [],
-                            },
-                        ],
-                    },
-                    GrammarNode {
-                        n_type: Literal,
-                        value: Some(
-                            String(
-                                "&&",
-                            ),
-                        ),
-                        children: [],
-                    },
-                    GrammarNode {
-                        n_type: Literal,
-                        value: Some(
-                            String(
-                                "||",
-                            ),
-                        ),
-                        children: [],
-                    },
-                ],
-            },
-            GrammarNode {
-                n_type: Id,
+                prop: Id,
                 value: Some(
                     String(
-                        "expr",
+                        "id",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Id,
+                value: Some(
+                    String(
+                        "fn_call",
                     ),
                 ),
                 children: [],
             },
         ],
     },
-    "var": GrammarNode {
-        n_type: String,
-        value: None,
-        children: [],
-    },
-    "expr": GrammarNode {
-        n_type: Variation,
+    "block": GrammarNode {
+        prop: Loop,
         value: None,
         children: [
             GrammarNode {
-                n_type: Id,
+                prop: Id,
+                value: Some(
+                    String(
+                        "statement",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Literal,
+                value: Some(
+                    String(
+                        "\\n",
+                    ),
+                ),
+                children: [],
+            },
+        ],
+    },
+    "expr": GrammarNode {
+        prop: Variation,
+        value: None,
+        children: [
+            GrammarNode {
+                prop: Id,
                 value: Some(
                     String(
                         "term",
@@ -216,11 +70,11 @@
                 children: [],
             },
             GrammarNode {
-                n_type: Expr,
+                prop: Expr,
                 value: None,
                 children: [
                     GrammarNode {
-                        n_type: Literal,
+                        prop: Literal,
                         value: Some(
                             String(
                                 "(",
@@ -229,7 +83,7 @@
                         children: [],
                     },
                     GrammarNode {
-                        n_type: Id,
+                        prop: Id,
                         value: Some(
                             String(
                                 "expr",
@@ -238,7 +92,7 @@
                         children: [],
                     },
                     GrammarNode {
-                        n_type: Literal,
+                        prop: Literal,
                         value: Some(
                             String(
                                 ")",
@@ -249,309 +103,25 @@
                 ],
             },
             GrammarNode {
-                n_type: Id,
+                prop: Id,
                 value: Some(
                     String(
-                        "factor",
+                        "unary",
                     ),
                 ),
                 children: [],
             },
             GrammarNode {
-                n_type: Expr,
-                value: None,
-                children: [
-                    GrammarNode {
-                        n_type: Variation,
-                        value: None,
-                        children: [
-                            GrammarNode {
-                                n_type: Literal,
-                                value: Some(
-                                    String(
-                                        "+",
-                                    ),
-                                ),
-                                children: [],
-                            },
-                            GrammarNode {
-                                n_type: Literal,
-                                value: Some(
-                                    String(
-                                        "-",
-                                    ),
-                                ),
-                                children: [],
-                            },
-                        ],
-                    },
-                    GrammarNode {
-                        n_type: Id,
-                        value: Some(
-                            String(
-                                "expr",
-                            ),
-                        ),
-                        children: [],
-                    },
-                ],
-            },
-        ],
-    },
-    "fn_call": GrammarNode {
-        n_type: Expr,
-        value: None,
-        children: [
-            GrammarNode {
-                n_type: Id,
+                prop: Id,
                 value: Some(
                     String(
-                        "id",
+                        "binary",
                     ),
                 ),
                 children: [],
             },
             GrammarNode {
-                n_type: Literal,
-                value: Some(
-                    String(
-                        "(",
-                    ),
-                ),
-                children: [],
-            },
-            GrammarNode {
-                n_type: Loop,
-                value: None,
-                children: [
-                    GrammarNode {
-                        n_type: Id,
-                        value: Some(
-                            String(
-                                "var",
-                            ),
-                        ),
-                        children: [],
-                    },
-                    GrammarNode {
-                        n_type: Literal,
-                        value: Some(
-                            String(
-                                ",",
-                            ),
-                        ),
-                        children: [],
-                    },
-                ],
-            },
-            GrammarNode {
-                n_type: Literal,
-                value: Some(
-                    String(
-                        ")",
-                    ),
-                ),
-                children: [],
-            },
-        ],
-    },
-    "statement": GrammarNode {
-        n_type: Variation,
-        value: None,
-        children: [
-            GrammarNode {
-                n_type: Id,
-                value: Some(
-                    String(
-                        "id",
-                    ),
-                ),
-                children: [],
-            },
-            GrammarNode {
-                n_type: Id,
-                value: Some(
-                    String(
-                        "assign",
-                    ),
-                ),
-                children: [],
-            },
-            GrammarNode {
-                n_type: Id,
-                value: Some(
-                    String(
-                        "block",
-                    ),
-                ),
-                children: [],
-            },
-            GrammarNode {
-                n_type: Id,
-                value: Some(
-                    String(
-                        "fn_decl",
-                    ),
-                ),
-                children: [],
-            },
-            GrammarNode {
-                n_type: Id,
-                value: Some(
-                    String(
-                        "if",
-                    ),
-                ),
-                children: [],
-            },
-            GrammarNode {
-                n_type: Id,
-                value: Some(
-                    String(
-                        "while",
-                    ),
-                ),
-                children: [],
-            },
-            GrammarNode {
-                n_type: Id,
-                value: Some(
-                    String(
-                        "expr",
-                    ),
-                ),
-                children: [],
-            },
-        ],
-    },
-    "assign": GrammarNode {
-        n_type: Expr,
-        value: None,
-        children: [
-            GrammarNode {
-                n_type: Id,
-                value: Some(
-                    String(
-                        "id",
-                    ),
-                ),
-                children: [],
-            },
-            GrammarNode {
-                n_type: Literal,
-                value: Some(
-                    String(
-                        "=",
-                    ),
-                ),
-                children: [],
-            },
-            GrammarNode {
-                n_type: Id,
-                value: Some(
-                    String(
-                        "literal",
-                    ),
-                ),
-                children: [],
-            },
-        ],
-    },
-    "block": GrammarNode {
-        n_type: Loop,
-        value: None,
-        children: [
-            GrammarNode {
-                n_type: Id,
-                value: Some(
-                    String(
-                        "statement",
-                    ),
-                ),
-                children: [],
-            },
-            GrammarNode {
-                n_type: Literal,
-                value: Some(
-                    String(
-                        "\\n",
-                    ),
-                ),
-                children: [],
-            },
-        ],
-    },
-    "id": GrammarNode {
-        n_type: String,
-        value: None,
-        children: [],
-    },
-    "while": GrammarNode {
-        n_type: Expr,
-        value: None,
-        children: [
-            GrammarNode {
-                n_type: Literal,
-                value: Some(
-                    String(
-                        "while",
-                    ),
-                ),
-                children: [],
-            },
-            GrammarNode {
-                n_type: Id,
-                value: Some(
-                    String(
-                        "expr",
-                    ),
-                ),
-                children: [],
-            },
-            GrammarNode {
-                n_type: Id,
-                value: Some(
-                    String(
-                        "block",
-                    ),
-                ),
-                children: [],
-            },
-        ],
-    },
-    "term": GrammarNode {
-        n_type: Variation,
-        value: None,
-        children: [
-            GrammarNode {
-                n_type: Id,
-                value: Some(
-                    String(
-                        "var",
-                    ),
-                ),
-                children: [],
-            },
-            GrammarNode {
-                n_type: Id,
-                value: Some(
-                    String(
-                        "fn_call",
-                    ),
-                ),
-                children: [],
-            },
-            GrammarNode {
-                n_type: Id,
-                value: Some(
-                    String(
-                        "literal",
-                    ),
-                ),
-                children: [],
-            },
-            GrammarNode {
-                n_type: Id,
+                prop: Id,
                 value: Some(
                     String(
                         "ternary",
@@ -559,48 +129,48 @@
                 ),
                 children: [],
             },
+            GrammarNode {
+                prop: Id,
+                value: Some(
+                    String(
+                        "special",
+                    ),
+                ),
+                children: [],
+            },
         ],
     },
-    "fn_decl": GrammarNode {
-        n_type: Expr,
+    "unary": GrammarNode {
+        prop: Expr,
         value: None,
         children: [
             GrammarNode {
-                n_type: Id,
-                value: Some(
-                    String(
-                        "id",
-                    ),
-                ),
-                children: [],
-            },
-            GrammarNode {
-                n_type: Literal,
-                value: Some(
-                    String(
-                        "(",
-                    ),
-                ),
-                children: [],
-            },
-            GrammarNode {
-                n_type: Loop,
+                prop: Variation,
                 value: None,
                 children: [
                     GrammarNode {
-                        n_type: Id,
+                        prop: Literal,
                         value: Some(
                             String(
-                                "id",
+                                "+",
                             ),
                         ),
                         children: [],
                     },
                     GrammarNode {
-                        n_type: Literal,
+                        prop: Literal,
                         value: Some(
                             String(
-                                ",",
+                                "-",
+                            ),
+                        ),
+                        children: [],
+                    },
+                    GrammarNode {
+                        prop: Literal,
+                        value: Some(
+                            String(
+                                "!",
                             ),
                         ),
                         children: [],
@@ -608,142 +178,10 @@
                 ],
             },
             GrammarNode {
-                n_type: Literal,
-                value: Some(
-                    String(
-                        ")",
-                    ),
-                ),
-                children: [],
-            },
-            GrammarNode {
-                n_type: Literal,
-                value: Some(
-                    String(
-                        "=>",
-                    ),
-                ),
-                children: [],
-            },
-            GrammarNode {
-                n_type: Id,
-                value: Some(
-                    String(
-                        "block",
-                    ),
-                ),
-                children: [],
-            },
-        ],
-    },
-    "ternary": GrammarNode {
-        n_type: Expr,
-        value: None,
-        children: [
-            GrammarNode {
-                n_type: Id,
+                prop: Id,
                 value: Some(
                     String(
                         "expr",
-                    ),
-                ),
-                children: [],
-            },
-            GrammarNode {
-                n_type: Literal,
-                value: Some(
-                    String(
-                        "?",
-                    ),
-                ),
-                children: [],
-            },
-            GrammarNode {
-                n_type: Id,
-                value: Some(
-                    String(
-                        "expr",
-                    ),
-                ),
-                children: [],
-            },
-            GrammarNode {
-                n_type: Literal,
-                value: Some(
-                    String(
-                        ":",
-                    ),
-                ),
-                children: [],
-            },
-            GrammarNode {
-                n_type: Id,
-                value: Some(
-                    String(
-                        "expr",
-                    ),
-                ),
-                children: [],
-            },
-        ],
-    },
-    "if": GrammarNode {
-        n_type: Expr,
-        value: None,
-        children: [
-            GrammarNode {
-                n_type: Literal,
-                value: Some(
-                    String(
-                        "if",
-                    ),
-                ),
-                children: [],
-            },
-            GrammarNode {
-                n_type: Id,
-                value: Some(
-                    String(
-                        "expr",
-                    ),
-                ),
-                children: [],
-            },
-            GrammarNode {
-                n_type: Id,
-                value: Some(
-                    String(
-                        "block",
-                    ),
-                ),
-                children: [],
-            },
-        ],
-    },
-    "literal": GrammarNode {
-        n_type: Variation,
-        value: None,
-        children: [
-            GrammarNode {
-                n_type: Num,
-                value: None,
-                children: [],
-            },
-            GrammarNode {
-                n_type: Bool,
-                value: None,
-                children: [],
-            },
-            GrammarNode {
-                n_type: String,
-                value: None,
-                children: [],
-            },
-            GrammarNode {
-                n_type: Id,
-                value: Some(
-                    String(
-                        "matrix",
                     ),
                 ),
                 children: [],
@@ -751,11 +189,11 @@
         ],
     },
     "matrix": GrammarNode {
-        n_type: Expr,
+        prop: Expr,
         value: None,
         children: [
             GrammarNode {
-                n_type: Literal,
+                prop: Literal,
                 value: Some(
                     String(
                         "[",
@@ -764,50 +202,20 @@
                 children: [],
             },
             GrammarNode {
-                n_type: Expr,
+                prop: Loop,
                 value: None,
                 children: [
                     GrammarNode {
-                        n_type: Loop,
-                        value: None,
-                        children: [
-                            GrammarNode {
-                                n_type: Id,
-                                value: Some(
-                                    String(
-                                        "expr",
-                                    ),
-                                ),
-                                children: [],
-                            },
-                            GrammarNode {
-                                n_type: Variation,
-                                value: None,
-                                children: [
-                                    GrammarNode {
-                                        n_type: Literal,
-                                        value: Some(
-                                            String(
-                                                ",",
-                                            ),
-                                        ),
-                                        children: [],
-                                    },
-                                    GrammarNode {
-                                        n_type: Literal,
-                                        value: Some(
-                                            String(
-                                                "\\s",
-                                            ),
-                                        ),
-                                        children: [],
-                                    },
-                                ],
-                            },
-                        ],
+                        prop: Id,
+                        value: Some(
+                            String(
+                                "row",
+                            ),
+                        ),
+                        children: [],
                     },
                     GrammarNode {
-                        n_type: Literal,
+                        prop: Literal,
                         value: Some(
                             String(
                                 ";",
@@ -818,10 +226,780 @@
                 ],
             },
             GrammarNode {
-                n_type: Literal,
+                prop: Id,
+                value: Some(
+                    String(
+                        "row",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Literal,
                 value: Some(
                     String(
                         "]",
+                    ),
+                ),
+                children: [],
+            },
+        ],
+    },
+    "row": GrammarNode {
+        prop: Expr,
+        value: None,
+        children: [
+            GrammarNode {
+                prop: Loop,
+                value: None,
+                children: [
+                    GrammarNode {
+                        prop: Id,
+                        value: Some(
+                            String(
+                                "expr",
+                            ),
+                        ),
+                        children: [],
+                    },
+                    GrammarNode {
+                        prop: Variation,
+                        value: None,
+                        children: [
+                            GrammarNode {
+                                prop: Literal,
+                                value: Some(
+                                    String(
+                                        ",",
+                                    ),
+                                ),
+                                children: [],
+                            },
+                            GrammarNode {
+                                prop: Literal,
+                                value: Some(
+                                    String(
+                                        "\\s",
+                                    ),
+                                ),
+                                children: [],
+                            },
+                        ],
+                    },
+                ],
+            },
+            GrammarNode {
+                prop: Id,
+                value: Some(
+                    String(
+                        "expr",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Variation,
+                value: None,
+                children: [
+                    GrammarNode {
+                        prop: Literal,
+                        value: Some(
+                            String(
+                                ",",
+                            ),
+                        ),
+                        children: [],
+                    },
+                    GrammarNode {
+                        prop: Literal,
+                        value: Some(
+                            String(
+                                "\\s",
+                            ),
+                        ),
+                        children: [],
+                    },
+                ],
+            },
+        ],
+    },
+    "assign": GrammarNode {
+        prop: Expr,
+        value: None,
+        children: [
+            GrammarNode {
+                prop: Id,
+                value: Some(
+                    String(
+                        "id",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Literal,
+                value: Some(
+                    String(
+                        "=",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Id,
+                value: Some(
+                    String(
+                        "literal",
+                    ),
+                ),
+                children: [],
+            },
+        ],
+    },
+    "if": GrammarNode {
+        prop: Expr,
+        value: None,
+        children: [
+            GrammarNode {
+                prop: Literal,
+                value: Some(
+                    String(
+                        "if",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Id,
+                value: Some(
+                    String(
+                        "expr",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Id,
+                value: Some(
+                    String(
+                        "block",
+                    ),
+                ),
+                children: [],
+            },
+        ],
+    },
+    "ternary": GrammarNode {
+        prop: Expr,
+        value: None,
+        children: [
+            GrammarNode {
+                prop: Id,
+                value: Some(
+                    String(
+                        "expr",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Literal,
+                value: Some(
+                    String(
+                        "?",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Id,
+                value: Some(
+                    String(
+                        "expr",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Literal,
+                value: Some(
+                    String(
+                        ":",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Id,
+                value: Some(
+                    String(
+                        "expr",
+                    ),
+                ),
+                children: [],
+            },
+        ],
+    },
+    "fn_decl": GrammarNode {
+        prop: Expr,
+        value: None,
+        children: [
+            GrammarNode {
+                prop: Id,
+                value: Some(
+                    String(
+                        "id",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Literal,
+                value: Some(
+                    String(
+                        "(",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Loop,
+                value: None,
+                children: [
+                    GrammarNode {
+                        prop: Id,
+                        value: Some(
+                            String(
+                                "id",
+                            ),
+                        ),
+                        children: [],
+                    },
+                    GrammarNode {
+                        prop: Literal,
+                        value: Some(
+                            String(
+                                ",",
+                            ),
+                        ),
+                        children: [],
+                    },
+                ],
+            },
+            GrammarNode {
+                prop: Id,
+                value: Some(
+                    String(
+                        "id",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Literal,
+                value: Some(
+                    String(
+                        ")",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Literal,
+                value: Some(
+                    String(
+                        "=>",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Id,
+                value: Some(
+                    String(
+                        "block",
+                    ),
+                ),
+                children: [],
+            },
+        ],
+    },
+    "binary": GrammarNode {
+        prop: Expr,
+        value: None,
+        children: [
+            GrammarNode {
+                prop: Id,
+                value: Some(
+                    String(
+                        "expr",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Id,
+                value: Some(
+                    String(
+                        "op",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Id,
+                value: Some(
+                    String(
+                        "expr",
+                    ),
+                ),
+                children: [],
+            },
+        ],
+    },
+    "op": GrammarNode {
+        prop: Order,
+        value: None,
+        children: [
+            GrammarNode {
+                prop: Literal,
+                value: Some(
+                    String(
+                        "^",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Literal,
+                value: Some(
+                    String(
+                        "%",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Variation,
+                value: None,
+                children: [
+                    GrammarNode {
+                        prop: Literal,
+                        value: Some(
+                            String(
+                                "*",
+                            ),
+                        ),
+                        children: [],
+                    },
+                    GrammarNode {
+                        prop: Literal,
+                        value: Some(
+                            String(
+                                "/",
+                            ),
+                        ),
+                        children: [],
+                    },
+                ],
+            },
+            GrammarNode {
+                prop: Variation,
+                value: None,
+                children: [
+                    GrammarNode {
+                        prop: Literal,
+                        value: Some(
+                            String(
+                                "+",
+                            ),
+                        ),
+                        children: [],
+                    },
+                    GrammarNode {
+                        prop: Literal,
+                        value: Some(
+                            String(
+                                "-",
+                            ),
+                        ),
+                        children: [],
+                    },
+                ],
+            },
+            GrammarNode {
+                prop: Variation,
+                value: None,
+                children: [
+                    GrammarNode {
+                        prop: Literal,
+                        value: Some(
+                            String(
+                                "&",
+                            ),
+                        ),
+                        children: [],
+                    },
+                    GrammarNode {
+                        prop: Literal,
+                        value: Some(
+                            String(
+                                "|",
+                            ),
+                        ),
+                        children: [],
+                    },
+                ],
+            },
+            GrammarNode {
+                prop: Variation,
+                value: None,
+                children: [
+                    GrammarNode {
+                        prop: Literal,
+                        value: Some(
+                            String(
+                                "<=",
+                            ),
+                        ),
+                        children: [],
+                    },
+                    GrammarNode {
+                        prop: Literal,
+                        value: Some(
+                            String(
+                                ">=",
+                            ),
+                        ),
+                        children: [],
+                    },
+                    GrammarNode {
+                        prop: Literal,
+                        value: Some(
+                            String(
+                                "<",
+                            ),
+                        ),
+                        children: [],
+                    },
+                    GrammarNode {
+                        prop: Literal,
+                        value: Some(
+                            String(
+                                ">",
+                            ),
+                        ),
+                        children: [],
+                    },
+                    GrammarNode {
+                        prop: Literal,
+                        value: Some(
+                            String(
+                                "==",
+                            ),
+                        ),
+                        children: [],
+                    },
+                    GrammarNode {
+                        prop: Literal,
+                        value: Some(
+                            String(
+                                "!=",
+                            ),
+                        ),
+                        children: [],
+                    },
+                ],
+            },
+            GrammarNode {
+                prop: Literal,
+                value: Some(
+                    String(
+                        "&&",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Literal,
+                value: Some(
+                    String(
+                        "||",
+                    ),
+                ),
+                children: [],
+            },
+        ],
+    },
+    "statement": GrammarNode {
+        prop: Variation,
+        value: None,
+        children: [
+            GrammarNode {
+                prop: Id,
+                value: Some(
+                    String(
+                        "comment",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Id,
+                value: Some(
+                    String(
+                        "id",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Id,
+                value: Some(
+                    String(
+                        "assign",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Id,
+                value: Some(
+                    String(
+                        "block",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Id,
+                value: Some(
+                    String(
+                        "fn_decl",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Id,
+                value: Some(
+                    String(
+                        "if",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Id,
+                value: Some(
+                    String(
+                        "while",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Id,
+                value: Some(
+                    String(
+                        "expr",
+                    ),
+                ),
+                children: [],
+            },
+        ],
+    },
+    "comment": GrammarNode {
+        prop: Expr,
+        value: None,
+        children: [
+            GrammarNode {
+                prop: Literal,
+                value: Some(
+                    String(
+                        "#",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Until,
+                value: Some(
+                    String(
+                        "\\n",
+                    ),
+                ),
+                children: [],
+            },
+        ],
+    },
+    "literal": GrammarNode {
+        prop: Variation,
+        value: None,
+        children: [
+            GrammarNode {
+                prop: Num,
+                value: None,
+                children: [],
+            },
+            GrammarNode {
+                prop: Bool,
+                value: None,
+                children: [],
+            },
+            GrammarNode {
+                prop: Expr,
+                value: None,
+                children: [
+                    GrammarNode {
+                        prop: Literal,
+                        value: Some(
+                            String(
+                                "\"",
+                            ),
+                        ),
+                        children: [],
+                    },
+                    GrammarNode {
+                        prop: String,
+                        value: None,
+                        children: [],
+                    },
+                    GrammarNode {
+                        prop: Literal,
+                        value: Some(
+                            String(
+                                "\"",
+                            ),
+                        ),
+                        children: [],
+                    },
+                ],
+            },
+            GrammarNode {
+                prop: Id,
+                value: Some(
+                    String(
+                        "matrix",
+                    ),
+                ),
+                children: [],
+            },
+        ],
+    },
+    "fn_call": GrammarNode {
+        prop: Expr,
+        value: None,
+        children: [
+            GrammarNode {
+                prop: Id,
+                value: Some(
+                    String(
+                        "id",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Literal,
+                value: Some(
+                    String(
+                        "(",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Loop,
+                value: None,
+                children: [
+                    GrammarNode {
+                        prop: Id,
+                        value: Some(
+                            String(
+                                "expr",
+                            ),
+                        ),
+                        children: [],
+                    },
+                    GrammarNode {
+                        prop: Literal,
+                        value: Some(
+                            String(
+                                ",",
+                            ),
+                        ),
+                        children: [],
+                    },
+                ],
+            },
+            GrammarNode {
+                prop: Literal,
+                value: Some(
+                    String(
+                        ")",
+                    ),
+                ),
+                children: [],
+            },
+        ],
+    },
+    "id": GrammarNode {
+        prop: String,
+        value: None,
+        children: [],
+    },
+    "while": GrammarNode {
+        prop: Expr,
+        value: None,
+        children: [
+            GrammarNode {
+                prop: Literal,
+                value: Some(
+                    String(
+                        "while",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Id,
+                value: Some(
+                    String(
+                        "expr",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Id,
+                value: Some(
+                    String(
+                        "block",
+                    ),
+                ),
+                children: [],
+            },
+        ],
+    },
+    "special": GrammarNode {
+        prop: Expr,
+        value: None,
+        children: [
+            GrammarNode {
+                prop: Id,
+                value: Some(
+                    String(
+                        "expr",
+                    ),
+                ),
+                children: [],
+            },
+            GrammarNode {
+                prop: Literal,
+                value: Some(
+                    String(
+                        "!",
                     ),
                 ),
                 children: [],

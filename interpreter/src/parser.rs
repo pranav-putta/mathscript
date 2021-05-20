@@ -196,7 +196,15 @@ impl Parser {
                 node
             }
             TokenType::LBracket => {
-                Ok(Expr::Matrix(Box::new(self.matrix().unwrap())))
+                let matrix = self.matrix();
+                match matrix {
+                    Ok(ok) => {
+                        Ok(Expr::Matrix(Box::new(ok)))
+                    }
+                    Err(err) => {
+                        Err(err)
+                    }
+                }
             }
             TokenType::ReservedValue => {
                 Ok(self.reserved_value().unwrap())
@@ -231,22 +239,20 @@ impl Parser {
             args.push(arg.clone());
         }
 
-        if self.current.token == LBrace {
+        return if self.current.token == LBrace {
             // multi line statements
             self.eat(LBrace);
             let exprs = self.block().unwrap();
             self.eat(RBrace);
-            return if let Expr::Block(block) = exprs {
+            if let Expr::Block(block) = exprs {
                 Ok(Expr::FnDecl(Box::new(FnDecl { id: fn_call.id.clone(), args: Sequence { seq: args }, func: *block })))
             } else {
                 Err(Error::WrongType(String::from("Couldn't parse")))
-            };
+            }
         } else {
             let expr = self.expr(true).unwrap();
-            return Ok(Expr::FnDecl(Box::new(FnDecl { id: fn_call.id.clone(), args: Sequence { seq: args }, func: Block { children: vec![expr] } })));
-        }
-
-        return Err(Error::WrongType(String::from("Expected {")));
+            Ok(Expr::FnDecl(Box::new(FnDecl { id: fn_call.id.clone(), args: Sequence { seq: args }, func: Block { children: vec![expr] } })))
+        };
     }
 
     fn function_call(&mut self) -> Result<Expr, Error> {
@@ -277,7 +283,15 @@ impl Parser {
         let mut arr = Vec::new();
         self.eat(LBracket);
         while self.current.token != RBracket {
-            arr.push(self.matrix_row(TokenType::RBracket).unwrap());
+            let row = self.matrix_row(TokenType::RBracket);
+            match row {
+                Ok(data) => {
+                    arr.push(data);
+                }
+                Err(err) => {
+                    return Err(err);
+                }
+            }
             if self.current.token == Semicolon {
                 self.eat(Semicolon);
             }
@@ -293,6 +307,10 @@ impl Parser {
         loop {
             let expr = self.expr(false).unwrap();
             arr.push(expr);
+
+            if self.current.token == Eof {
+                return Err(Error::WrongDimension);
+            }
 
             if self.current.token != Semicolon && self.current.token != end
             {
@@ -384,6 +402,15 @@ mod tests {
     }
 
     #[test]
+    fn test_fib() {
+        let result = interpret("fib(n) = {
+                            n <= 2 ? 1 : fib(n - 1) + fib(n - 2)
+                            }
+fib(30)");
+        println!("{:#?}", result);
+    }
+
+    #[test]
     fn test_inequality() {
         let result = interpret("1 + 3 > 4");
         println!("{:#?}", result);
@@ -421,7 +448,7 @@ mod tests {
 
     #[test]
     fn test_err() {
-        let result = interpret("x = 3\ny + 2");
+        let result = interpret("90*0.24");
         println!("{:#?}", result);
     }
 }

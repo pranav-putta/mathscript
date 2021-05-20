@@ -45,7 +45,6 @@ pub enum TokenType {
     Semicolon,
     Comma,
     Assign,
-    Bar,
     Dot,
     EndL,
     AndBit,
@@ -53,6 +52,7 @@ pub enum TokenType {
     Colon,
     Ternary,
     SQuote,
+    DQuote,
     At,
     BackSlash,
     HashTag,
@@ -60,6 +60,57 @@ pub enum TokenType {
 
 /// TokenType implementation
 impl TokenType {
+    fn match_double_symbol(c: &str) -> Option<TokenType> {
+        return match c {
+            "&&" => { Some(TokenType::AndBool) }
+            "||" => { Some(TokenType::OrBool) }
+            "!=" => { Some(TokenType::NotEq) }
+            "=>" => { Some(TokenType::Def) }
+            "==" => { Some(TokenType::Eq) }
+            "<=" => { Some(TokenType::LessEq) }
+            ">=" => { Some(TokenType::MoreEq) }
+            "+=" => { Some(TokenType::AddEq) }
+            "-=" => { Some(TokenType::SubEq) }
+            "*=" => { Some(TokenType::MulEq) }
+            "/=" => { Some(TokenType::DivEq) }
+            _ => { None }
+        };
+    }
+    fn match_single_symbol(c: &str) -> Option<TokenType> {
+        return match c {
+            "!" => { Some(TokenType::NotUnary) }
+            "+" => { Some(TokenType::Plus) }
+            "-" => { Some(TokenType::Minus) }
+            "*" => { Some(TokenType::Mul) }
+            "/" => { Some(TokenType::Div) }
+            "^" => { Some(TokenType::Pow) }
+            "%" => { Some(TokenType::Mod) }
+            "(" => { Some(TokenType::LParen) }
+            ")" => { Some(TokenType::RParen) }
+            "[" => { Some(TokenType::LBracket) }
+            "]" => { Some(TokenType::RBracket) }
+            "{" => { Some(TokenType::LBrace) }
+            "}" => { Some(TokenType::RBrace) }
+            "<" => { Some(TokenType::LArrow) }
+            ">" => { Some(TokenType::RArrow) }
+            ";" => { Some(TokenType::Semicolon) }
+            "," => { Some(TokenType::Comma) }
+            "=" => { Some(TokenType::Assign) }
+            "|" => { Some(TokenType::OrBit) }
+            "." => { Some(TokenType::Dot) }
+            "\n" => { Some(TokenType::EndL) }
+            "&" => { Some(TokenType::AndBit) }
+            ":" => { Some(TokenType::Colon) }
+            "?" => { Some(TokenType::Ternary) }
+            "'" => { Some(TokenType::SQuote) }
+            "\"" => { Some(TokenType::DQuote) }
+            "@" => { Some(TokenType::At) }
+            "\\" => { Some(TokenType::BackSlash) }
+            "#" => { Some(TokenType::HashTag) }
+            _ => { None }
+        };
+    }
+
     fn value(&self) -> &str {
         return match self {
             TokenType::Num => { "num" }
@@ -96,7 +147,6 @@ impl TokenType {
             TokenType::Semicolon => { ";" }
             TokenType::Comma => { "," }
             TokenType::Assign => { "=" }
-            TokenType::Bar => { "|" }
             TokenType::Dot => { "." }
             TokenType::EndL => { "\n" }
             TokenType::AndBit => { "&" }
@@ -107,53 +157,8 @@ impl TokenType {
             TokenType::At => { "@" }
             TokenType::BackSlash => { "\\" }
             TokenType::HashTag => { "#" }
+            TokenType::DQuote => { "\"" }
         };
-    }
-
-    // TODO: Optimize with a static match instead
-    fn symbols() -> [TokenType; 40] {
-        static TOKEN_TYPES: [TokenType; 40] = [TokenType::AndBool,
-            TokenType::OrBool,
-            TokenType::NotEq,
-            TokenType::Def,
-            TokenType::Eq,
-            TokenType::LessEq,
-            TokenType::MoreEq,
-            TokenType::AddEq,
-            TokenType::SubEq,
-            TokenType::MulEq,
-            TokenType::DivEq,
-            TokenType::NotUnary,
-            TokenType::Plus,
-            TokenType::Minus,
-            TokenType::Mul,
-            TokenType::Div,
-            TokenType::Pow,
-            TokenType::Mod,
-            TokenType::LParen,
-            TokenType::RParen,
-            TokenType::LBracket,
-            TokenType::RBracket,
-            TokenType::LBrace,
-            TokenType::RBrace,
-            TokenType::LArrow,
-            TokenType::RArrow,
-            TokenType::Semicolon,
-            TokenType::Comma,
-            TokenType::Assign,
-            TokenType::Bar,
-            TokenType::Dot,
-            TokenType::EndL,
-            TokenType::AndBit,
-            TokenType::OrBit,
-            TokenType::Colon,
-            TokenType::Ternary,
-            TokenType::SQuote,
-            TokenType::At,
-            TokenType::BackSlash,
-            TokenType::HashTag];
-
-        return TOKEN_TYPES;
     }
 }
 
@@ -252,48 +257,44 @@ impl Lexer {
     }
 
     /// tokenizes the current character stream
-    fn tokenize(&mut self) -> Result<Token, &'static str> {
+    fn tokenize(&mut self) -> Result<Token, String> {
         // ignore white space
         self.ignore_whitespace();
 
-        if !self.has_next() {
+        return if !self.has_next() {
             //  reached end of file
-            return Ok(Token { token: TokenType::Eof, value: TokenValue::String(TokenType::Eof.value().to_string()) });
+            Ok(Token { token: TokenType::Eof, value: TokenValue::String(TokenType::Eof.value().to_string()) })
         } else if self.current.is_ascii_digit() {
             // tokenize a number
-            return Ok(self.tokenize_number());
+            Ok(self.tokenize_number())
         } else if self.current.is_alphanumeric() {
             // tokenize a identifier
-            return Ok(self.tokenize_identifier());
+            Ok(self.tokenize_identifier())
         } else {
             // tokenize any reserve character
-            for tok in TokenType::symbols().iter() {
-                let mut tok_str = String::from(self.current);
-                let tok_val = tok.value();
+            // search single
+            let mut tok_str = String::from(self.current);
+            let mut result = TokenType::match_single_symbol(tok_str.as_str());
+            if result.is_none() {
+                return Err(format!("unexpected symbol {}", tok_str));
+            }
 
-                // if token is multiple characters, peek forward
-                for step in 1..tok_val.len() {
-                    let next = self.peek(step as i32);
-                    match next {
-                        None => { continue; }
-                        Some(val) => { tok_str.push(val) }
-                    }
-                }
+            let mut tok = result.unwrap();
+            self.advance();
 
-                // check if token and text match
-                if tok_str.eq(tok.value()) {
-                    // skip all characters that were checked
-                    for _ in 0..tok_val.len() {
-                        self.advance();
-                    }
-
-                    return Ok(Token { token: (*tok).clone(), value: TokenValue::String(tok_str) });
+            // check next token for symbol with 2 characters
+            if self.has_next() {
+                tok_str.push(self.current);
+                result = TokenType::match_double_symbol(tok_str.as_str());
+                if result.is_some() {
+                    tok = result.unwrap();
+                    self.advance();
+                } else {
+                    tok_str.pop();
                 }
             }
-        }
-
-        // throw error
-        return Err("unexpected symbol");
+            Ok(Token { token: tok, value: TokenValue::String(tok_str) })
+        };
     }
 }
 
@@ -327,12 +328,12 @@ impl Lexer {
     }
 
     /// retrieves next token in text
-    pub fn next_token(&mut self) -> Result<Token, &'static str> {
+    pub fn next_token(&mut self) -> Result<Token, String> {
         self.tokenize()
     }
 
     /// retrieves next token without advancing the current position
-    pub fn peek_token(&mut self) -> Result<Token, &'static str> {
+    pub fn peek_token(&mut self) -> Result<Token, String> {
         let tmp_pos = self.position;
         let tmp_char = self.current;
         let tok = self.tokenize();
@@ -347,16 +348,38 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_arithmetic() {
+    fn test_logical() {
         let text = "true && true";
         let mut lexer = Lexer::new(text);
 
         let mut tok = lexer.next_token().unwrap();
-        assert_eq!(tok.token, TokenType::Reserved);
+        assert_eq!(tok.token, TokenType::ReservedValue);
         tok = lexer.next_token().unwrap();
         assert_eq!(tok.token, TokenType::AndBool);
         tok = lexer.next_token().unwrap();
-        assert_eq!(tok.token, TokenType::Reserved);
+        assert_eq!(tok.token, TokenType::ReservedValue);
         println!("{:?}", tok.token);
+    }
+
+    #[test]
+    fn test_arithmetic() {
+        let text = "1 + 2 * 3 * 4";
+        let mut lexer = Lexer::new(text);
+
+        let mut tok = lexer.next_token().unwrap();
+        assert_eq!(tok.token, TokenType::Num);
+        tok = lexer.next_token().unwrap();
+        assert_eq!(tok.token, TokenType::Plus);
+        tok = lexer.next_token().unwrap();
+        assert_eq!(tok.token, TokenType::Num);
+        tok = lexer.next_token().unwrap();
+        assert_eq!(tok.token, TokenType::Mul);
+        tok = lexer.next_token().unwrap();
+        assert_eq!(tok.token, TokenType::Num);
+        tok = lexer.next_token().unwrap();
+        assert_eq!(tok.token, TokenType::Mul);
+        tok = lexer.next_token().unwrap();
+        assert_eq!(tok.token, TokenType::Num);
+        println!("{:?}", tok.value);
     }
 }
