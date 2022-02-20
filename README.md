@@ -1,8 +1,8 @@
-# MathScript -- A 'lite' Mathematica
+# MathScript -- Scripting Calculator
 Built by Pranav Putta, Georgia Institute of Technology 2020
 
 ## About
-MathScript is a scripting language built for optimized matrix calculations. It runs through a fully custom bytecode interpreter built using Rust. MathScript is ready to go for online usage, easy to compile into WebAssembly and deployable on ReactJS through any supported web browser.
+MathScript is a scripting language built for matrix calculations. It runs through a fully custom bytecode interpreter built using Rust. MathScript is ready to go for online usage, easy to compile into WebAssembly and deployable on ReactJS through any supported web browser.
 
 MathScript supports recursion, ternary operations, boolean expressions, and many other standard language operations.
 Matrices and units are treated as first-class citizens in MathScript, allowing users to label variables with units and have automatic conversion and simplification done through the web.
